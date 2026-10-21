@@ -1,12 +1,10 @@
-export const GITHUB_REPOSITORY_URL = "https://github.com/pingdotgg/t3code";
-
-export const IOS_APP_STORE_URL =
-  "https://apps.apple.com/us/app/t3-code-remote-claude-more/id6787819824";
-
-export const ANDROID_PLAY_STORE_URL =
-  "https://play.google.com/store/apps/details?id=com.t3tools.t3code";
-
+export const COMPANY_NAME = "LX Obsidian Labs";
+export const COMPANY_WEBSITE_URL = "https://www.lxobsidianportal.co.za";
+export const BOOK_CALL_URL = "https://www.lxobsidianportal.co.za";
+export const GITHUB_REPOSITORY_URL = "https://github.com/lx-obsidian-labs/lx-obsidian-cli";
+export const IOS_APP_STORE_URL = "https://www.lxobsidianportal.co.za";
+export const ANDROID_PLAY_STORE_URL = "https://www.lxobsidianportal.co.za";
 export const MARKETING_STATS = {
-  githubStars: "24k+",
-  users: "500,000",
+  githubStars: "Open source",
+  users: "Custom platform",
 } as const;
