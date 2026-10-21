@@ -1019,7 +1019,10 @@ it.layer(NodeServices.layer)("AgentSessionScanner", (it) => {
           { path: plain, git: null },
           {
             path: repo,
-            git: { remoteKey: "github.com/lx-obsidian-labs/lx-obsidian-cli", repository: "lx-obsidian-labs/lx-obsidian-cli" },
+            git: {
+              remoteKey: "github.com/lx-obsidian-labs/lx-obsidian-cli",
+              repository: "lx-obsidian-labs/lx-obsidian-cli",
+            },
           },
         ]);
       }),
@@ -1079,7 +1082,10 @@ it.layer(NodeServices.layer)("AgentSessionScanner", (it) => {
 
           const input = { claudeHomePath, codexHomePath, configBaseDir };
           const result = yield* runScan(input);
-          const git = { remoteKey: "github.com/lx-obsidian-labs/lx-obsidian-cli", repository: "lx-obsidian-labs/lx-obsidian-cli" };
+          const git = {
+            remoteKey: "github.com/lx-obsidian-labs/lx-obsidian-cli",
+            repository: "lx-obsidian-labs/lx-obsidian-cli",
+          };
           expect(
             result.candidates.map((candidate) => ({ path: candidate.path, git: candidate.git })),
           ).toEqual([

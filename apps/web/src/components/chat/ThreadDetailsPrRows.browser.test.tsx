@@ -287,7 +287,9 @@ it("keeps workspace controls after expanding and collapsing 70 linked pull reque
   await userEvent.click(page.getByRole("button", { name: "Show 69 more" }));
   await expect.element(page.getByRole("button", { name: "Show less" })).toBeInTheDocument();
   const extraRows = () =>
-    container.querySelectorAll('[aria-label^="https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/"]');
+    container.querySelectorAll(
+      '[aria-label^="https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/"]',
+    );
   expect(extraRows()).toHaveLength(69);
   // Let native ResizeObserver deliver the expanded content size before collapsing it.
   await act(async () => {

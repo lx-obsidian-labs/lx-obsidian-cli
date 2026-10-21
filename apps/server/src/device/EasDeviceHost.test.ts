@@ -324,14 +324,22 @@ describe("EAS Simulator host", () => {
         JSON.stringify([
           { name: "LX Obsidian CLI · EAS Simulator · left", appId: APP_ID, recordedAt: 0 },
           // Recorded long enough ago that Expo has ended it, so the record goes.
-          { name: "LX Obsidian CLI · EAS Simulator · gone", appId: APP_ID, recordedAt: -181 * 60_000 },
+          {
+            name: "LX Obsidian CLI · EAS Simulator · gone",
+            appId: APP_ID,
+            recordedAt: -181 * 60_000,
+          },
           // Recorded just now and not listed yet: kept for a later sweep.
           { name: "LX Obsidian CLI · EAS Simulator · new", appId: APP_ID, recordedAt: 0 },
         ]),
       );
       const expo = fakeExpo({
         active: [
-          { id: "left-behind", status: "IN_PROGRESS", name: "LX Obsidian CLI · EAS Simulator · left" },
+          {
+            id: "left-behind",
+            status: "IN_PROGRESS",
+            name: "LX Obsidian CLI · EAS Simulator · left",
+          },
         ],
       });
       const host = yield* makeHost(expo, config(), yield* Scope.make());
@@ -362,7 +370,9 @@ describe("EAS Simulator host", () => {
       yield* fs.makeDirectory(path.dirname(ledger), { recursive: true });
       yield* fs.writeFileString(
         ledger,
-        JSON.stringify([{ name: "LX Obsidian CLI · EAS Simulator · new", appId: APP_ID, recordedAt: 0 }]),
+        JSON.stringify([
+          { name: "LX Obsidian CLI · EAS Simulator · new", appId: APP_ID, recordedAt: 0 },
+        ]),
       );
       const expo = fakeExpo();
       const host = yield* makeHost(expo, config({ maxConcurrentSessions: 1 }), yield* Scope.make());
@@ -387,12 +397,20 @@ describe("EAS Simulator host", () => {
       yield* fs.writeFileString(
         ledger,
         JSON.stringify([
-          { name: "LX Obsidian CLI · EAS Simulator · old", appId: APP_ID, recordedAt: -10 * 60_000 },
+          {
+            name: "LX Obsidian CLI · EAS Simulator · old",
+            appId: APP_ID,
+            recordedAt: -10 * 60_000,
+          },
         ]),
       );
       const expo = fakeExpo({
         active: [
-          { id: "old-session", status: "IN_PROGRESS", name: "LX Obsidian CLI · EAS Simulator · old" },
+          {
+            id: "old-session",
+            status: "IN_PROGRESS",
+            name: "LX Obsidian CLI · EAS Simulator · old",
+          },
         ],
       });
       const host = yield* makeHost(expo, config({ maxConcurrentSessions: 1 }), yield* Scope.make());
@@ -414,13 +432,21 @@ describe("EAS Simulator host", () => {
       yield* fs.writeFileString(
         ledger,
         JSON.stringify([
-          { name: "LX Obsidian CLI · EAS Simulator · old", appId: APP_ID, recordedAt: -10 * 60_000 },
+          {
+            name: "LX Obsidian CLI · EAS Simulator · old",
+            appId: APP_ID,
+            recordedAt: -10 * 60_000,
+          },
         ]),
       );
       let listFails = true;
       const expo = fakeExpo({
         active: [
-          { id: "old-session", status: "IN_PROGRESS", name: "LX Obsidian CLI · EAS Simulator · old" },
+          {
+            id: "old-session",
+            status: "IN_PROGRESS",
+            name: "LX Obsidian CLI · EAS Simulator · old",
+          },
         ],
         failList: () => listFails,
       });
@@ -449,7 +475,11 @@ describe("EAS Simulator host", () => {
         yield* fs.writeFileString(
           ledger,
           JSON.stringify([
-            { name: "LX Obsidian CLI · EAS Simulator · gone", appId: APP_ID, recordedAt: -181 * 60_000 },
+            {
+              name: "LX Obsidian CLI · EAS Simulator · gone",
+              appId: APP_ID,
+              recordedAt: -181 * 60_000,
+            },
             {
               name: "LX Obsidian CLI · EAS Simulator · refused",
               appId: APP_ID,
@@ -645,13 +675,21 @@ describe("EAS Simulator host", () => {
       yield* fs.writeFileString(
         ledger,
         JSON.stringify([
-          { name: "LX Obsidian CLI · EAS Simulator · old", appId: APP_ID, recordedAt: -181 * 60_000 },
+          {
+            name: "LX Obsidian CLI · EAS Simulator · old",
+            appId: APP_ID,
+            recordedAt: -181 * 60_000,
+          },
         ]),
       );
       // Expo still lists it (queued for hours, say) and refuses to stop it.
       const expo = fakeExpo({
         active: [
-          { id: "old-session", status: "IN_PROGRESS", name: "LX Obsidian CLI · EAS Simulator · old" },
+          {
+            id: "old-session",
+            status: "IN_PROGRESS",
+            name: "LX Obsidian CLI · EAS Simulator · old",
+          },
         ],
         failStop: () => true,
       });

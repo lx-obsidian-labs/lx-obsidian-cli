@@ -124,11 +124,13 @@ function send(action: string, trusted = true) {
 
 describe("macAppBundlePath", () => {
   it("resolves bundles with spaces and refuses non-bundle executables", () => {
-    expect(macAppBundlePath("/Applications/LX Obsidian CLI.app/Contents/MacOS/LX Obsidian CLI")).toBe(
-      "/Applications/LX Obsidian CLI.app",
-    );
+    expect(
+      macAppBundlePath("/Applications/LX Obsidian CLI.app/Contents/MacOS/LX Obsidian CLI"),
+    ).toBe("/Applications/LX Obsidian CLI.app");
     expect(macAppBundlePath("/usr/local/bin/electron")).toBeUndefined();
-    expect(macAppBundlePath("/Applications/LX Obsidian CLI.app/other/MacOS/LX Obsidian CLI")).toBeUndefined();
+    expect(
+      macAppBundlePath("/Applications/LX Obsidian CLI.app/other/MacOS/LX Obsidian CLI"),
+    ).toBeUndefined();
   });
 });
 it("drags the running app bundle only for the helper's own renderer", async () => {
@@ -142,7 +144,9 @@ it("drags the running app bundle only for the helper's own renderer", async () =
     icon: mocks.createFromPath.mock.results[0]!.value.resize(),
   });
   send("finder");
-  expect(mocks.showItemInFolder).toHaveBeenCalledWith("/Applications/LX Obsidian CLI (Nightly).app");
+  expect(mocks.showItemInFolder).toHaveBeenCalledWith(
+    "/Applications/LX Obsidian CLI (Nightly).app",
+  );
 });
 it("rechecks permissions and releases resources when granted", async () => {
   await open();
@@ -184,7 +188,9 @@ it("offers the Finder fallback when native dragging fails", async () => {
     throw new Error("drag failed");
   });
   send("drag");
-  expect(mocks.showItemInFolder).toHaveBeenCalledWith("/Applications/LX Obsidian CLI (Nightly).app");
+  expect(mocks.showItemInFolder).toHaveBeenCalledWith(
+    "/Applications/LX Obsidian CLI (Nightly).app",
+  );
   expect(windows[0]!.destroyed).toBe(false);
 });
 

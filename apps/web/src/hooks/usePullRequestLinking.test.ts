@@ -5,7 +5,9 @@ import { parseChangeRequestUrl } from "~/lib/openPullRequestLink";
 
 describe("canLinkChangeRequest (#9435 / #9440)", () => {
   const nonGitProject = { id: "scratch-project" } as never;
-  const link = parseChangeRequestUrl("https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/15111")!;
+  const link = parseChangeRequestUrl(
+    "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/15111",
+  )!;
 
   it("links a pasted pull request URL when the server tracks links on the thread, even with no matching project", () => {
     expect(canLinkChangeRequest("multiple", [nonGitProject], link)).toBe(true);

@@ -1757,7 +1757,12 @@ describe("pull request panel context beside a thread", () => {
       const onHost = (host: string) =>
         threadPullRequestPanelTarget({
           projectId: "proj-a",
-          pullRequests: [link(15046, { host, url: `https://${host}/lx-obsidian-labs/lx-obsidian-cli/pull/15046` })],
+          pullRequests: [
+            link(15046, {
+              host,
+              url: `https://${host}/lx-obsidian-labs/lx-obsidian-cli/pull/15046`,
+            }),
+          ],
           linkedPullRequest,
         });
       expect(onHost("github.com")).toBe(linkedPullRequest);

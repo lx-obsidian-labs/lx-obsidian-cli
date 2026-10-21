@@ -269,7 +269,8 @@ const config: ExpoConfig = {
       },
       NSLocalNetworkUsageDescription:
         "Allow LX Obsidian CLI to connect to LX Obsidian CLI servers on your local network or tailnet.",
-      NSPhotoLibraryAddUsageDescription: "Allow LX Obsidian CLI to save images to your photo library.",
+      NSPhotoLibraryAddUsageDescription:
+        "Allow LX Obsidian CLI to save images to your photo library.",
       // "Audio, AirPlay, and Picture in Picture": the browser screen's system
       // picture in picture needs it to start and to stay up outside the app.
       UIBackgroundModes: ["audio"],
@@ -387,7 +388,8 @@ const config: ExpoConfig = {
     [
       "expo-camera",
       {
-        cameraPermission: "Allow LX Obsidian CLI to access your camera so you can scan pairing QR codes.",
+        cameraPermission:
+          "Allow LX Obsidian CLI to access your camera so you can scan pairing QR codes.",
         microphonePermission: false,
         barcodeScannerEnabled: true,
         recordAudioAndroid: false,

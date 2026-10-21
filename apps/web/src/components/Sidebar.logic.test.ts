@@ -1051,9 +1051,9 @@ describe("pullRequestMatchesSearchQuery", () => {
 
   it("matches when every query token appears in the PR's terms", () => {
     expect(pullRequestMatchesSearchQuery({ branchPullRequest }, "123")).toBe(true);
-    expect(pullRequestMatchesSearchQuery({ branchPullRequest }, "lx-obsidian-labs/lx-obsidian-cli #123")).toBe(
-      true,
-    );
+    expect(
+      pullRequestMatchesSearchQuery({ branchPullRequest }, "lx-obsidian-labs/lx-obsidian-cli #123"),
+    ).toBe(true);
   });
 
   it("rejects queries with a token the PR does not carry, and blank queries", () => {

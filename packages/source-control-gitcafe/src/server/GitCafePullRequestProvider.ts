@@ -687,7 +687,10 @@ export const make = Effect.gen(function* () {
           return;
         }
         default:
-          return yield* failure(input.action, `GitCafe cannot ${input.action} from LX Obsidian CLI.`);
+          return yield* failure(
+            input.action,
+            `GitCafe cannot ${input.action} from LX Obsidian CLI.`,
+          );
       }
     }),
     updateChangeRequest: Effect.fn("GitCafePullRequestProvider.updateChangeRequest")(

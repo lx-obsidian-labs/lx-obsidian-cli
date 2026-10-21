@@ -41,7 +41,10 @@ describe("image preview groups", () => {
 
   it("uses actual filenames instead of captions with punctuation and paths", () => {
     expect(
-      filePreviewName({ ...first, name: 'main: "New thread in..." shows lx-obsidian-labs/lx-obsidian-cli' }),
+      filePreviewName({
+        ...first,
+        name: 'main: "New thread in..." shows lx-obsidian-labs/lx-obsidian-cli',
+      }),
     ).toBe("first.png");
     expect(
       filePreviewName({

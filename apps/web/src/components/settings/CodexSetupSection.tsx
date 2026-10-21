@@ -627,7 +627,9 @@ function ManagedCodexSetup({
   const callbackCompletion =
     !handoff && auth?.phase === "waiting" && url ? (
       <div className="flex w-full flex-col gap-3 text-xs leading-relaxed text-muted-foreground">
-        <p>If sign-in doesn't return to LX Obsidian CLI, paste the URL from the final localhost page.</p>
+        <p>
+          If sign-in doesn't return to LX Obsidian CLI, paste the URL from the final localhost page.
+        </p>
         <form
           className="flex flex-col gap-2 sm:flex-row sm:items-center"
           onSubmit={(event) => {

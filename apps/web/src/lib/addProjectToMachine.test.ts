@@ -4,12 +4,12 @@ import { cloneUrlForProtocol, cloneUrlProtocol, isDefaultCopiedFile } from "./ad
 
 describe("cloneUrlForProtocol", () => {
   it("switches between scp-style SSH and HTTPS", () => {
-    expect(cloneUrlForProtocol("git@github.com:lx-obsidian-labs/lx-obsidian-cli.git", "https")).toBe(
-      "https://github.com/lx-obsidian-labs/lx-obsidian-cli.git",
-    );
-    expect(cloneUrlForProtocol("https://github.com/lx-obsidian-labs/lx-obsidian-cli.git", "ssh")).toBe(
-      "git@github.com:lx-obsidian-labs/lx-obsidian-cli.git",
-    );
+    expect(
+      cloneUrlForProtocol("git@github.com:lx-obsidian-labs/lx-obsidian-cli.git", "https"),
+    ).toBe("https://github.com/lx-obsidian-labs/lx-obsidian-cli.git");
+    expect(
+      cloneUrlForProtocol("https://github.com/lx-obsidian-labs/lx-obsidian-cli.git", "ssh"),
+    ).toBe("git@github.com:lx-obsidian-labs/lx-obsidian-cli.git");
     expect(cloneUrlForProtocol("ssh://git@gitlab.com/group/sub/repo.git", "https")).toBe(
       "https://gitlab.com/group/sub/repo.git",
     );

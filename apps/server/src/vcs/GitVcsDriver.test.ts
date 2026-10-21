@@ -107,7 +107,12 @@ it.effect("lists the fetch and push URLs of a partial clone remote", () =>
     });
     const driver = yield* GitVcsDriver.makeVcsDriverShape();
     yield* runGit(cwd, ["init"]);
-    yield* runGit(cwd, ["remote", "add", "origin", "https://github.com/lx-obsidian-labs/lx-obsidian-cli.git"]);
+    yield* runGit(cwd, [
+      "remote",
+      "add",
+      "origin",
+      "https://github.com/lx-obsidian-labs/lx-obsidian-cli.git",
+    ]);
     yield* runGit(cwd, [
       "remote",
       "set-url",

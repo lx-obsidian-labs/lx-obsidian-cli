@@ -6,7 +6,12 @@ export const threadTitleEvaluationCases = [
     source: "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/10462",
     request: "Review the reset credit routing change.",
     previousTitle: "Review PR 10462",
-    messages: [{ role: "user", text: "Review https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/10462" }],
+    messages: [
+      {
+        role: "user",
+        text: "Review https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/10462",
+      },
+    ],
     rubric: "Name reset credit routing. Distinguish it from displaying credit balances.",
   },
   {

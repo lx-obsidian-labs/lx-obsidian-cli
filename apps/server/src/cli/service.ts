@@ -196,7 +196,9 @@ const serviceUninstallCommand = Command.make("uninstall", projectLocationFlags).
         const service = yield* BootService.BootService;
         const removed = yield* service.uninstall;
         yield* Console.log(
-          removed ? "Removed the LX Obsidian CLI service." : "LX Obsidian CLI service is not installed.",
+          removed
+            ? "Removed the LX Obsidian CLI service."
+            : "LX Obsidian CLI service is not installed.",
         );
       }),
     ),
@@ -226,7 +228,9 @@ export const offerServiceDuringOnboarding = Effect.gen(function* () {
     return "skipped" as const;
   }
   if (installed && current) {
-    yield* Console.log("LX Obsidian CLI is already set up to run in the background on this machine.");
+    yield* Console.log(
+      "LX Obsidian CLI is already set up to run in the background on this machine.",
+    );
     return "ready" as const;
   }
   for (const problem of status.problems ?? []) {

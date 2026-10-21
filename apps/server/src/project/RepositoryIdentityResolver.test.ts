@@ -544,7 +544,9 @@ it.layer(NodeServices.layer)("RepositoryIdentityResolverLive", (it) => {
 
       const refreshedIdentity = yield* resolver.resolve(cwd);
       expect(refreshedIdentity).not.toBeNull();
-      expect(refreshedIdentity?.canonicalKey).toBe("github.com/lx-obsidian-labs/lx-obsidian-cli-next");
+      expect(refreshedIdentity?.canonicalKey).toBe(
+        "github.com/lx-obsidian-labs/lx-obsidian-cli-next",
+      );
       expect(refreshedIdentity?.displayName).toBe("T3Tools/t3code-next");
       expect(refreshedIdentity?.name).toBe("t3code-next");
     }).pipe(

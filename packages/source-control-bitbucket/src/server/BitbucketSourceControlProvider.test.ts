@@ -27,7 +27,11 @@ it.effect("maps Bitbucket PR summaries into provider-neutral change requests", (
         decodePullRequest({
           id: 42,
           title: "Add Bitbucket provider",
-          links: { html: { href: "https://bitbucket.org/lx-obsidian-labs/lx-obsidian-cli/pull-requests/42" } },
+          links: {
+            html: {
+              href: "https://bitbucket.org/lx-obsidian-labs/lx-obsidian-cli/pull-requests/42",
+            },
+          },
           source: {
             branch: { name: "feature/source-control" },
             commit: { hash: "a".repeat(40) },

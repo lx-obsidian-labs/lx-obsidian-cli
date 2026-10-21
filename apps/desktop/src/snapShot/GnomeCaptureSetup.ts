@@ -55,7 +55,9 @@ export async function installGnomeCaptureBundle({ bundle, dataHome }: SetupPaths
       await NodeFSP.readFile(NodePath.join(target, "metadata.json"), "utf8"),
     );
     if (installed.version > metadata.version)
-      throw new Error("A newer extension is installed. Update LX Obsidian CLI instead of replacing it.");
+      throw new Error(
+        "A newer extension is installed. Update LX Obsidian CLI instead of replacing it.",
+      );
   }
   const staged = await NodeFSP.mkdtemp(NodePath.join(parent, ".t3-capture-install-"));
   let backup: string | undefined;
@@ -199,7 +201,8 @@ export class GnomeCaptureSetup {
       if (info.state?.value === 1)
         return {
           status: "enabled",
-          message: "The LX Obsidian CLI extension is running. Active-window snapshots are available.",
+          message:
+            "The LX Obsidian CLI extension is running. Active-window snapshots are available.",
         };
       if (info.state?.value === 3 || info.state?.value === 4)
         return {

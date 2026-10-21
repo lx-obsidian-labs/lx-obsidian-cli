@@ -107,7 +107,10 @@ const watch = (threadId: ThreadId, number: number) =>
       threadId,
       ...pullRequest(number),
       watching: true,
-      link: { url: `https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/${number}`, source: "agent" },
+      link: {
+        url: `https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/${number}`,
+        source: "agent",
+      },
     });
   });
 

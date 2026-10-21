@@ -3975,7 +3975,10 @@ it.layer(
             ]);
             assert.strictEqual(cursorProvider?.enabled, false);
             assert.strictEqual(cursorProvider?.status, "disabled");
-            assert.strictEqual(cursorProvider?.message, "Cursor is disabled in LX Obsidian CLI settings.");
+            assert.strictEqual(
+              cursorProvider?.message,
+              "Cursor is disabled in LX Obsidian CLI settings.",
+            );
             const museProvider = providers.find((provider) => provider.driver === "muse");
             assert.strictEqual(museProvider?.enabled, false);
             assert.strictEqual(museProvider?.status, "disabled");

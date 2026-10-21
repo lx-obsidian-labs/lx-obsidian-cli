@@ -547,7 +547,10 @@ it.layer(NodeServices.layer)("build-desktop-artifact", (it) => {
 
   it("switches desktop packaging product names to nightly for nightly builds", () => {
     assert.equal(resolveDesktopProductName("0.1.0"), "LX Obsidian CLI (Beta)");
-    assert.equal(resolveDesktopProductName("0.0.17-nightly.20260413.42"), "LX Obsidian CLI (Nightly)");
+    assert.equal(
+      resolveDesktopProductName("0.0.17-nightly.20260413.42"),
+      "LX Obsidian CLI (Nightly)",
+    );
   });
 
   it("switches desktop packaging icons to the nightly artwork for nightly versions", () => {
@@ -654,7 +657,9 @@ it.layer(NodeServices.layer)("build-desktop-artifact", (it) => {
     }).pipe(
       Effect.provide(
         ConfigProvider.layer(
-          ConfigProvider.fromEnv({ env: { GITHUB_REPOSITORY: "lx-obsidian-labs/lx-obsidian-cli" } }),
+          ConfigProvider.fromEnv({
+            env: { GITHUB_REPOSITORY: "lx-obsidian-labs/lx-obsidian-cli" },
+          }),
         ),
       ),
     ),

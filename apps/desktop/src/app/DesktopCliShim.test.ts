@@ -158,7 +158,11 @@ describe("renderCliShim", () => {
 
   it("switches the Windows console to UTF-8 only when a path needs it", () => {
     const ascii = renderCliShim({
-      target: { kind: "windows", executable: "C:\\T3\\LX Obsidian CLI.exe", entry: "C:\\T3\\bin.mjs" },
+      target: {
+        kind: "windows",
+        executable: "C:\\T3\\LX Obsidian CLI.exe",
+        entry: "C:\\T3\\bin.mjs",
+      },
       shimPath: "C:\\Users\\me\\.t3\\bin\\t3.cmd",
       t3Home: "C:\\Users\\me\\.t3",
     });

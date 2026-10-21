@@ -7,7 +7,9 @@ const endpoint = (url: string | null) => ({ path, url, hasSecret: false });
 
 describe("webhookAddress", () => {
   it("uses the T3 Connect URL when the server has one", () => {
-    expect(webhookAddress(endpoint("https://www.lxobsidianportal.co.za/v1/hooks/k/t/x"), null)).toEqual({
+    expect(
+      webhookAddress(endpoint("https://www.lxobsidianportal.co.za/v1/hooks/k/t/x"), null),
+    ).toEqual({
       address: "https://www.lxobsidianportal.co.za/v1/hooks/k/t/x",
       copyable: true,
       note: null,

@@ -409,7 +409,10 @@ it.effect("prefers an explicit repository and uses context when the repository i
       remoteName: "origin",
       remoteUrl: "git@bitbucket.org:another/context.git",
     };
-    for (const repository of ["lx-obsidian-labs/lx-obsidian-cli", "https://bitbucket.org/lx-obsidian-labs/lx-obsidian-cli.git"]) {
+    for (const repository of [
+      "lx-obsidian-labs/lx-obsidian-cli",
+      "https://bitbucket.org/lx-obsidian-labs/lx-obsidian-cli.git",
+    ]) {
       yield* bitbucket.getRepositoryCloneUrls({ cwd: "/repo", context, repository });
     }
     yield* bitbucket.getDefaultBranch({ cwd: "/repo", context });
@@ -443,7 +446,9 @@ it.effect("discovers the repository from cwd remotes when the repository is omit
     assert.deepStrictEqual(listRemotes.mock.calls, [["/repo"]]);
     assert.isTrue(
       execute.mock.calls.every(([request]) =>
-        request.url.startsWith("https://api.test.local/2.0/repositories/lx-obsidian-labs/lx-obsidian-cli"),
+        request.url.startsWith(
+          "https://api.test.local/2.0/repositories/lx-obsidian-labs/lx-obsidian-cli",
+        ),
       ),
     );
   }).pipe(Effect.provide(layer));
@@ -549,7 +554,10 @@ it.effect("creates repositories through the Bitbucket REST API", () => {
     });
 
     const request = execute.mock.calls[0]?.[0];
-    assert.strictEqual(request?.url, "https://api.test.local/2.0/repositories/lx-obsidian-labs/lx-obsidian-cli");
+    assert.strictEqual(
+      request?.url,
+      "https://api.test.local/2.0/repositories/lx-obsidian-labs/lx-obsidian-cli",
+    );
     assert.strictEqual(request?.method, "POST");
     assert.ok(request);
     const rawBody = (request.body as { readonly body?: Uint8Array }).body;

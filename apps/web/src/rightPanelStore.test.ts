@@ -1226,8 +1226,16 @@ describe("rightPanelStore", () => {
   });
 
   it("tracks one surface per pull request", () => {
-    const first = { projectId: "project-a", repository: "lx-obsidian-labs/lx-obsidian-cli", number: 4909 };
-    const second = { projectId: "project-a", repository: "lx-obsidian-labs/lx-obsidian-cli", number: 4910 };
+    const first = {
+      projectId: "project-a",
+      repository: "lx-obsidian-labs/lx-obsidian-cli",
+      number: 4909,
+    };
+    const second = {
+      projectId: "project-a",
+      repository: "lx-obsidian-labs/lx-obsidian-cli",
+      number: 4910,
+    };
     useRightPanelStore.getState().openPullRequest(refA, first);
     useRightPanelStore.getState().openPullRequest(refA, second);
     const url = "https://gitlab.example.com/lx-obsidian-labs/lx-obsidian-cli/-/merge_requests/4909";
@@ -1247,7 +1255,11 @@ describe("rightPanelStore", () => {
   });
 
   it("restores each environment, thread and PR surface's detail tab after reload and URL reopen", async () => {
-    const pr = { projectId: "project-a", repository: "lx-obsidian-labs/lx-obsidian-cli", number: 4909 };
+    const pr = {
+      projectId: "project-a",
+      repository: "lx-obsidian-labs/lx-obsidian-cli",
+      number: 4909,
+    };
     const otherPr = { ...pr, projectId: "project-b" };
     const otherEnvironment = scopeThreadRef("env-2" as EnvironmentId, refA.threadId);
     const selections = [

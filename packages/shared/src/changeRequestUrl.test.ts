@@ -99,12 +99,18 @@ describe("parseChangeRequestUrl", () => {
   });
 
   it("survives trailing segments, a trailing slash and a query string", () => {
-    expect(parseChangeRequestUrl("https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/123/files?w=1")).toEqual({
+    expect(
+      parseChangeRequestUrl(
+        "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/123/files?w=1",
+      ),
+    ).toEqual({
       host: "github.com",
       repository: "lx-obsidian-labs/lx-obsidian-cli",
       number: 123,
     });
-    expect(parseChangeRequestUrl("https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/123/")).toEqual({
+    expect(
+      parseChangeRequestUrl("https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/123/"),
+    ).toEqual({
       host: "github.com",
       repository: "lx-obsidian-labs/lx-obsidian-cli",
       number: 123,

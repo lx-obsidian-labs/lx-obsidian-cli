@@ -189,7 +189,10 @@ it.layer(NodeServices.layer)("host CLI commands", (it) => {
       yield* fs.writeFileString(shim, "@echo off\r\n");
       const hostCommand = (platform: NodeJS.Platform, env: Record<string, string>) =>
         resolveHostCliCommand("doctor", ["--base-dir", "C:\\Users\\Jane Doe\\.t3"]).pipe(
-          Effect.provideService(HostProcess.ExecutablePath, "C:\\Program Files\\LX Obsidian CLI\\t3.exe"),
+          Effect.provideService(
+            HostProcess.ExecutablePath,
+            "C:\\Program Files\\LX Obsidian CLI\\t3.exe",
+          ),
           Effect.provideService(HostProcess.Arguments, [
             "C:\\Program Files\\LX Obsidian CLI\\t3.exe",
             "C:\\Program Files\\LX Obsidian CLI\\resources\\app.asar\\apps\\server\\dist\\bin.mjs",

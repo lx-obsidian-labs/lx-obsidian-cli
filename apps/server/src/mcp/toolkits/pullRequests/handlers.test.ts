@@ -277,7 +277,10 @@ describe("pull request toolkit handlers", () => {
           type: "thread.pull-request.watch",
           number: 9,
           watching: true,
-          link: { url: "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/9", source: "agent" },
+          link: {
+            url: "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/9",
+            source: "agent",
+          },
         },
       ]);
     }),
@@ -309,7 +312,10 @@ describe("pull request toolkit handlers", () => {
         .pipe(Effect.flip);
       expect(error).toMatchObject({ _tag: "PullRequestNotOpenError", state: "merged" });
       expect(
-        yield* harness.call("unwatch_pull_request", { repository: "lx-obsidian-labs/lx-obsidian-cli", number: 3 }),
+        yield* harness.call("unwatch_pull_request", {
+          repository: "lx-obsidian-labs/lx-obsidian-cli",
+          number: 3,
+        }),
       ).toMatchObject({ wasWatching: true });
       expect(yield* Ref.get(harness.commands)).toMatchObject([
         { type: "thread.pull-request.watch", number: 3, watching: false },
@@ -325,7 +331,10 @@ describe("pull request toolkit handlers", () => {
           { ...closed, snapshot: closed.snapshot && { ...closed.snapshot, state: "closed" } },
         ]),
       });
-      yield* harness.call("watch_pull_request", { repository: "lx-obsidian-labs/lx-obsidian-cli", number: 1 });
+      yield* harness.call("watch_pull_request", {
+        repository: "lx-obsidian-labs/lx-obsidian-cli",
+        number: 1,
+      });
       expect(yield* Ref.get(harness.commands)).toMatchObject([
         { type: "thread.pull-request.watch", number: 1, watching: true },
       ]);

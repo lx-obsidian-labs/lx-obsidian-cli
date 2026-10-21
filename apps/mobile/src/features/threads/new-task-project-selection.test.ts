@@ -72,10 +72,14 @@ describe("getProjectScopeSelectionTarget", () => {
 
 describe("resolveEnvironmentProjectMatch", () => {
   it("follows the same repository onto the target machine", () => {
-    const selected = makeProject("t3code", "mac", { repositoryKey: "github.com/lx-obsidian-labs/lx-obsidian-cli" });
+    const selected = makeProject("t3code", "mac", {
+      repositoryKey: "github.com/lx-obsidian-labs/lx-obsidian-cli",
+    });
     const target = [
       makeProject("other", "server", { repositoryKey: "github.com/t3tools/other" }),
-      makeProject("t3code-clone", "server", { repositoryKey: "github.com/lx-obsidian-labs/lx-obsidian-cli" }),
+      makeProject("t3code-clone", "server", {
+        repositoryKey: "github.com/lx-obsidian-labs/lx-obsidian-cli",
+      }),
     ];
     expect(resolveEnvironmentProjectMatch(target, selected)).toBe(target[1]);
   });
@@ -111,7 +115,9 @@ describe("resolveEnvironmentProjectMatch", () => {
   });
 
   it("falls back to the first project on the target so the draft has a key to carry over to", () => {
-    const selected = makeProject("t3code", "mac", { repositoryKey: "github.com/lx-obsidian-labs/lx-obsidian-cli" });
+    const selected = makeProject("t3code", "mac", {
+      repositoryKey: "github.com/lx-obsidian-labs/lx-obsidian-cli",
+    });
     const target = [makeProject("unrelated", "server"), makeProject("also-unrelated", "server")];
     expect(resolveEnvironmentProjectMatch(target, selected)).toBe(target[0]);
     expect(resolveEnvironmentProjectMatch([], selected)).toBeNull();

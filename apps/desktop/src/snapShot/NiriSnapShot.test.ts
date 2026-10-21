@@ -147,7 +147,9 @@ it("waits for the restored T3 window to map instead of polling", async () => {
     await original(request, socket);
     if (request === "EventStream")
       send(socket, {
-        WindowOpenedOrChanged: { window: { ...window, id: 4, pid: process.pid, title: "LX Obsidian CLI" } },
+        WindowOpenedOrChanged: {
+          window: { ...window, id: 4, pid: process.pid, title: "LX Obsidian CLI" },
+        },
       });
   };
   await snapshot.feedback!.activate("LX Obsidian CLI");
@@ -168,7 +170,9 @@ it("cancels pending activation when capture feedback is closed", async () => {
     await original(request, socket);
     if (request === "EventStream") started.resolve();
   };
-  const activation = expect(snapshot.feedback!.activate("LX Obsidian CLI")).rejects.toThrow("cancelled");
+  const activation = expect(snapshot.feedback!.activate("LX Obsidian CLI")).rejects.toThrow(
+    "cancelled",
+  );
   await started.promise;
   snapshot.feedback!.close();
   await activation;

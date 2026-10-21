@@ -5,8 +5,12 @@ const window = (pid, title) => ({ get_pid: () => pid, get_title: () => title });
 
 it("activates only a window of the process authenticated by D-Bus", () => {
   const target = window(42, "LX Obsidian CLI");
-  expect(findCaptureDestination([window(99, "LX Obsidian CLI"), target], 42, "LX Obsidian CLI")).toBe(target);
-  expect(findCaptureDestination([window(99, "LX Obsidian CLI")], 42, "LX Obsidian CLI")).toBeUndefined();
+  expect(
+    findCaptureDestination([window(99, "LX Obsidian CLI"), target], 42, "LX Obsidian CLI"),
+  ).toBe(target);
+  expect(
+    findCaptureDestination([window(99, "LX Obsidian CLI")], 42, "LX Obsidian CLI"),
+  ).toBeUndefined();
   expect(findCaptureDestination([target], 42, "Title before navigation")).toBe(target);
 });
 

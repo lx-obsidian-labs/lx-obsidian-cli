@@ -88,7 +88,9 @@ const connectInspector = Effect.fn("measure.connectInspector")(function* (metro:
     .pipe(Effect.flatMap(HttpClientResponse.schemaBodyJson(InspectorTargets)));
   const target = targets.find((entry) => entry.appId.startsWith("com.t3tools.t3code"));
   if (!target)
-    return yield* new MeasureError({ message: `No LX Obsidian CLI app is attached to Metro at ${metro}.` });
+    return yield* new MeasureError({
+      message: `No LX Obsidian CLI app is attached to Metro at ${metro}.`,
+    });
   // Expo terminates inspector sockets whose Origin differs from the URL Metro
   // advertises (the LAN address with `--lan`), so pass that URL as `--metro`.
   const socket = yield* Socket.makeWebSocket(target.webSocketDebuggerUrl, {

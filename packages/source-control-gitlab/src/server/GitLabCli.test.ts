@@ -101,7 +101,8 @@ layer("GitLabCli.layer", (it) => {
               {
                 iid: 43,
                 title: "  Valid MR  ",
-                web_url: " https://gitlab.com/lx-obsidian-labs/lx-obsidian-cli/-/merge_requests/43 ",
+                web_url:
+                  " https://gitlab.com/lx-obsidian-labs/lx-obsidian-cli/-/merge_requests/43 ",
                 target_branch: " main ",
                 source_branch: " feature/mr-list ",
                 state: "merged",

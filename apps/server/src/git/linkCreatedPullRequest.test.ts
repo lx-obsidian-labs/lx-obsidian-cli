@@ -187,7 +187,10 @@ describe("linkCreatedPullRequest", () => {
       }).pipe(Effect.provide(layerDependencies));
       yield* linkCreatedPullRequest({
         threadId: THREAD_ID,
-        result: prResult({ status: "created", url: "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/42" }),
+        result: prResult({
+          status: "created",
+          url: "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/42",
+        }),
         commandId,
       }).pipe(Effect.provide(layerDependencies));
 

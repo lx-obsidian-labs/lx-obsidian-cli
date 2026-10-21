@@ -89,7 +89,10 @@ describe("pull request project filter choices", () => {
 
   it("keeps repositories on different hosts separate", () => {
     const choices = pullRequestFilterProjects(
-      [project("github"), project("enterprise", nucbox, "git.example.com/lx-obsidian-labs/lx-obsidian-cli")],
+      [
+        project("github"),
+        project("enterprise", nucbox, "git.example.com/lx-obsidian-labs/lx-obsidian-cli"),
+      ],
       labels,
     );
 

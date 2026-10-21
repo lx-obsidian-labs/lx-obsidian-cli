@@ -108,7 +108,9 @@ describe("parseOriginUrlFromGitConfig", () => {
       '[branch "main"]',
       "\tremote = origin",
     ].join("\n");
-    expect(parseOriginUrlFromGitConfig(config)).toBe("git@github.com:lx-obsidian-labs/lx-obsidian-cli.git");
+    expect(parseOriginUrlFromGitConfig(config)).toBe(
+      "git@github.com:lx-obsidian-labs/lx-obsidian-cli.git",
+    );
   });
 
   it("strips inline comments and quotes from the url value", () => {

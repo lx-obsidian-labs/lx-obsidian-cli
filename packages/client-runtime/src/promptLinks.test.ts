@@ -23,7 +23,10 @@ describe("findPromptLinkProject", () => {
     const projects = [
       {
         id: "fork",
-        repositoryIdentity: identity("github.com/lx-obsidian-labs/lx-obsidian-cli", "github.com/me/t3code"),
+        repositoryIdentity: identity(
+          "github.com/lx-obsidian-labs/lx-obsidian-cli",
+          "github.com/me/t3code",
+        ),
       },
       { id: "none", repositoryIdentity: null },
       { id: "recent", repositoryIdentity: identity("github.com/PingDotGG/T3Code") },

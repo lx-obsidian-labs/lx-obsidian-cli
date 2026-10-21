@@ -554,7 +554,9 @@ describe("reuseUnchangedThreadShells", () => {
   it("keeps explicitly refreshed links instead of the previous links", () => {
     const updated = {
       ...linked,
-      pullRequests: [{ ...link, number: 4, url: "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/4" }],
+      pullRequests: [
+        { ...link, number: 4, url: "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/4" },
+      ],
     };
     const incoming = { ...v2ShellSnapshot, threads: [updated] };
     const next = reuseUnchangedThreadShells({ ...v2ShellSnapshot, threads: [linked] }, incoming);

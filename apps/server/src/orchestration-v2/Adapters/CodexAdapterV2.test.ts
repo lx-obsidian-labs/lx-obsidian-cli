@@ -1676,7 +1676,11 @@ function codexReplayPreamble(input: {
         id: 1,
         method: "initialize",
         params: {
-          clientInfo: { name: "LX Obsidian CLI", title: "LX Obsidian CLI", version: packageJson.version },
+          clientInfo: {
+            name: "LX Obsidian CLI",
+            title: "LX Obsidian CLI",
+            version: packageJson.version,
+          },
           capabilities: {
             experimentalApi: true,
             optOutNotificationMethods: ["turn/diff/updated"],
@@ -2385,7 +2389,11 @@ describe("CodexAdapterV2 post-settle continuation", () => {
       );
       assert.deepEqual(initializeParams, [
         {
-          clientInfo: { name: "LX Obsidian CLI", title: "LX Obsidian CLI", version: packageJson.version },
+          clientInfo: {
+            name: "LX Obsidian CLI",
+            title: "LX Obsidian CLI",
+            version: packageJson.version,
+          },
           capabilities: {
             experimentalApi: true,
             optOutNotificationMethods: ["turn/diff/updated"],

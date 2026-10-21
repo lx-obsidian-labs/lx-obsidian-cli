@@ -96,7 +96,9 @@ export function callAcpMcpTool(
       if (!response.ok) {
         yield* discardResponseBody(response);
         return yield* Effect.fail(
-          new AcpMcpBridgeError(`LX Obsidian CLI MCP endpoint responded with HTTP ${response.status}.`),
+          new AcpMcpBridgeError(
+            `LX Obsidian CLI MCP endpoint responded with HTTP ${response.status}.`,
+          ),
         );
       }
       const payloads = yield* Stream.runCollect(responsePayloads(response, bridgeError));

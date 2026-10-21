@@ -66,7 +66,9 @@ describe("ThreadPullRequestServiceV2 project guard", () => {
       );
       expect(resolvedRoot).toBe("/workspace/project");
       expect(result.repository).toBe("lx-obsidian-labs/lx-obsidian-cli");
-      expect(result.project.repositoryIdentity?.canonicalKey).toBe("github.com/lx-obsidian-labs/lx-obsidian-cli");
+      expect(result.project.repositoryIdentity?.canonicalKey).toBe(
+        "github.com/lx-obsidian-labs/lx-obsidian-cli",
+      );
     }),
   );
 

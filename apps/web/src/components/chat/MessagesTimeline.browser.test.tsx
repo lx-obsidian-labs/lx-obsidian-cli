@@ -1369,7 +1369,11 @@ describe("timeline tooltip scroll dismissal", () => {
         originalUrl="https://example.com"
         target={{
           environmentId: ENVIRONMENT_ID,
-          input: { projectId: "project-1" as never, repository: "lx-obsidian-labs/lx-obsidian-cli", number: 1 },
+          input: {
+            projectId: "project-1" as never,
+            repository: "lx-obsidian-labs/lx-obsidian-cli",
+            number: 1,
+          },
         }}
       />
     ) : (

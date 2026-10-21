@@ -149,7 +149,10 @@ export function resolvePiLaunchArgs(launchArgs: string): PiLaunchArgsResolution 
       continue;
     }
     if (arg.startsWith("-")) {
-      return { ok: false, message: `Pi launch argument '${arg}' is not supported by LX Obsidian CLI.` };
+      return {
+        ok: false,
+        message: `Pi launch argument '${arg}' is not supported by LX Obsidian CLI.`,
+      };
     }
     return {
       ok: false,

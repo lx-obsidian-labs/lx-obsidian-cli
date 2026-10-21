@@ -204,7 +204,10 @@ describe("matchesLinkedPullRequestUrl", () => {
 
   it("rejects a different pull request or host", () => {
     expect(
-      matchesLinkedPullRequestUrl(linkedPullRequest, "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/43"),
+      matchesLinkedPullRequestUrl(
+        linkedPullRequest,
+        "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/43",
+      ),
     ).toBe(false);
     expect(
       matchesLinkedPullRequestUrl(

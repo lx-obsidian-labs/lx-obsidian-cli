@@ -20,12 +20,12 @@ const captureError = (run: () => unknown): unknown => {
 
 describe("Clerk relay auth", () => {
   it("derives a custom Frontend API hostname from a Clerk publishable key", () => {
-    expect(clerkFrontendApiHostnameFromPublishableKey(clerkPublishableKey("www.lxobsidianportal.co.za"))).toBe(
-      "www.lxobsidianportal.co.za",
-    );
-    expect(clerkFrontendApiUrlFromPublishableKey(clerkPublishableKey("www.lxobsidianportal.co.za"))).toBe(
-      "https://www.lxobsidianportal.co.za",
-    );
+    expect(
+      clerkFrontendApiHostnameFromPublishableKey(clerkPublishableKey("www.lxobsidianportal.co.za")),
+    ).toBe("www.lxobsidianportal.co.za");
+    expect(
+      clerkFrontendApiUrlFromPublishableKey(clerkPublishableKey("www.lxobsidianportal.co.za")),
+    ).toBe("https://www.lxobsidianportal.co.za");
   });
 
   it("preserves Clerk publishable key decoding failures", () => {

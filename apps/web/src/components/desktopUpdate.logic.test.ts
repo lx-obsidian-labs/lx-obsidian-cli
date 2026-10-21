@@ -233,7 +233,9 @@ describe("desktop update UI helpers", () => {
   });
 
   it("builds the nightly release URL without dropping its version suffix", () => {
-    expect(getDesktopUpdateReleaseUrl("0.0.30-nightly.20260728.931", "lx-obsidian-labs/lx-obsidian-cli")).toBe(
+    expect(
+      getDesktopUpdateReleaseUrl("0.0.30-nightly.20260728.931", "lx-obsidian-labs/lx-obsidian-cli"),
+    ).toBe(
       "https://github.com/lx-obsidian-labs/lx-obsidian-cli/releases/tag/v0.0.30-nightly.20260728.931",
     );
   });

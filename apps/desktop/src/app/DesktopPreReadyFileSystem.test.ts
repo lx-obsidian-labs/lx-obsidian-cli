@@ -23,7 +23,10 @@ it.layer(NodeServices.layer)("DesktopPreReadyFileSystem", (it) => {
       const path = yield* Path.Path;
       const root = yield* fileSystem.makeTempDirectoryScoped({ prefix: "t3-pre-ready-fs-" });
       yield* fileSystem.makeDirectory(path.join(root, "LX Obsidian CLI (Alpha)"));
-      yield* fileSystem.writeFileString(path.join(root, "LX Obsidian CLI (Alpha)", "Local State"), "keys");
+      yield* fileSystem.writeFileString(
+        path.join(root, "LX Obsidian CLI (Alpha)", "Local State"),
+        "keys",
+      );
 
       const userData = yield* resolveWindowsUserData(root);
 

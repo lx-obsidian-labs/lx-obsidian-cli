@@ -55,7 +55,8 @@ export function getProviderSummary(provider: ServerProvider | undefined) {
     return {
       headline: "Disabled",
       detail:
-        provider.message ?? "This provider is installed but disabled for new sessions in LX Obsidian CLI.",
+        provider.message ??
+        "This provider is installed but disabled for new sessions in LX Obsidian CLI.",
     };
   }
   if (!provider.installed) {

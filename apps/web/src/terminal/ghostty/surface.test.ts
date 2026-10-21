@@ -704,7 +704,10 @@ describe("GhosttyTerminalSurface visibility", () => {
       expect(surface.canvas.style.cursor).toBe("pointer");
       harness.pointer("pointerdown", 5, 1, modifiers);
       harness.pointer("pointerup", 5, 0, modifiers);
-      expect(openLink).toHaveBeenLastCalledWith("https://www.lxobsidianportal.co.za", expect.any(Event));
+      expect(openLink).toHaveBeenLastCalledWith(
+        "https://www.lxobsidianportal.co.za",
+        expect.any(Event),
+      );
     },
   );
 
@@ -1292,7 +1295,9 @@ describe("terminalLinkAtPositionWithRange", () => {
       wrapsToNext: false,
     };
 
-    expect(terminalLinkAtPositionWithRange([row], 0, 2)?.text).toBe("https://www.lxobsidianportal.co.za");
+    expect(terminalLinkAtPositionWithRange([row], 0, 2)?.text).toBe(
+      "https://www.lxobsidianportal.co.za",
+    );
     expect(terminalLinkAtPositionWithRange([row], 0, cells.length - 1)?.text).toBe(
       "https://www.lxobsidianportal.co.za",
     );
@@ -1342,7 +1347,9 @@ describe("terminalLinkAtPositionWithRange", () => {
     const tailCut = [row("https://www.lxobsidianportal.co.za", false, true)];
     expect(terminalLinkAtPositionWithRange(tailCut, 0, 8)).toBeNull();
     const complete = [row("https://www.lxobsidianportal.co.za", false), row("", false)];
-    expect(terminalLinkAtPositionWithRange(complete, 0, 8)?.text).toBe("https://www.lxobsidianportal.co.za");
+    expect(terminalLinkAtPositionWithRange(complete, 0, 8)?.text).toBe(
+      "https://www.lxobsidianportal.co.za",
+    );
     const wideFull: GhosttyRow = {
       cells: [
         { ...cell("🙂"), wide: 1 },
@@ -1364,7 +1371,9 @@ describe("terminalLinkAtPositionWithRange", () => {
       isWrapContinuation: false,
       wrapsToNext: false,
     };
-    expect(terminalLinkAtPositionWithRange([unwrittenTail], 0, 8)?.text).toBe("https://www.lxobsidianportal.co.za");
+    expect(terminalLinkAtPositionWithRange([unwrittenTail], 0, 8)?.text).toBe(
+      "https://www.lxobsidianportal.co.za",
+    );
   });
 });
 

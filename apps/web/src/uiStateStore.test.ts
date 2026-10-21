@@ -149,10 +149,15 @@ describe("uiStateStore pure functions", () => {
   });
 
   it("stores the sidebar project scope and resets it to all projects", () => {
-    const scoped = setSidebarProjectScopeKey(makeUiState(), "github.com/lx-obsidian-labs/lx-obsidian-cli");
+    const scoped = setSidebarProjectScopeKey(
+      makeUiState(),
+      "github.com/lx-obsidian-labs/lx-obsidian-cli",
+    );
 
     expect(scoped.sidebarProjectScopeKey).toBe("github.com/lx-obsidian-labs/lx-obsidian-cli");
-    expect(setSidebarProjectScopeKey(scoped, "github.com/lx-obsidian-labs/lx-obsidian-cli")).toBe(scoped);
+    expect(setSidebarProjectScopeKey(scoped, "github.com/lx-obsidian-labs/lx-obsidian-cli")).toBe(
+      scoped,
+    );
     expect(setSidebarProjectScopeKey(scoped, null).sidebarProjectScopeKey).toBeNull();
     expect(setSidebarProjectScopeKey(scoped, "").sidebarProjectScopeKey).toBeNull();
   });
@@ -339,7 +344,9 @@ describe("uiStateStore persistence", () => {
   });
 
   it("restores the sidebar project scope across reloads", () => {
-    persistState(makeUiState({ sidebarProjectScopeKey: "github.com/lx-obsidian-labs/lx-obsidian-cli" }));
+    persistState(
+      makeUiState({ sidebarProjectScopeKey: "github.com/lx-obsidian-labs/lx-obsidian-cli" }),
+    );
 
     const persisted = JSON.parse(
       localStorageStub.getItem(PERSISTED_STATE_KEY) ?? "{}",

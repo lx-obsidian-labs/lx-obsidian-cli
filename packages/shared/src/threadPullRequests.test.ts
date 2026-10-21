@@ -576,7 +576,12 @@ describe("threadPullRequestSearchTerms", () => {
           url: "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/12",
         },
       });
-      for (const query of ["11809", "#11809", "lx-obsidian-labs/lx-obsidian-cli#11809", branchPullRequest.url]) {
+      for (const query of [
+        "11809",
+        "#11809",
+        "lx-obsidian-labs/lx-obsidian-cli#11809",
+        branchPullRequest.url,
+      ]) {
         expect(terms.some((term) => term.includes(query))).toBe(true);
       }
       expect(terms).toContain(pullRequests?.length ? "#34" : "#12");

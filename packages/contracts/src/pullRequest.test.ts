@@ -148,7 +148,9 @@ describe("PullRequestListInput", () => {
   });
 
   it("takes back the continuation a result handed out, keyed the way it arrived", () => {
-    const cursors = { "github.com lx-obsidian-labs/lx-obsidian-cli": "2026-07-02T00:00:00Z|99|1,2" };
+    const cursors = {
+      "github.com lx-obsidian-labs/lx-obsidian-cli": "2026-07-02T00:00:00Z|99|1,2",
+    };
 
     expect(decodeListInput({ state: "open", cursors }).cursors).toStrictEqual(cursors);
   });

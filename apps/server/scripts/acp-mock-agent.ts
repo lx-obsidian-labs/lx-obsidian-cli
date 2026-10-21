@@ -1149,7 +1149,10 @@ const program = Effect.gen(function* () {
             rawInput: { variant: "WebFetch", url: "https://www.lxobsidianportal.co.za" },
             rawOutput: {
               type: "WebFetch",
-              Content: { url: "https://www.lxobsidianportal.co.za", content: "LX Obsidian CLI page" },
+              Content: {
+                url: "https://www.lxobsidianportal.co.za",
+                content: "LX Obsidian CLI page",
+              },
             },
             content: [{ type: "content", content: { type: "text", text: "LX Obsidian CLI page" } }],
           },

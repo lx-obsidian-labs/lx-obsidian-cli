@@ -1264,7 +1264,10 @@ describe("merging the environments' own listings", () => {
 
   it("keeps each environment's continuation to itself", () => {
     const merged = mergePullRequestLists([
-      [ENV_1, answer({ nextCursors: { "github.com lx-obsidian-labs/lx-obsidian-cli": "cursor-1" } })],
+      [
+        ENV_1,
+        answer({ nextCursors: { "github.com lx-obsidian-labs/lx-obsidian-cli": "cursor-1" } }),
+      ],
       [ENV_2, answer()],
     ]);
     expect(merged?.nextCursors).toEqual({

@@ -29,15 +29,23 @@ describe("connectAuth", () => {
   });
 
   it("rejects authorize requests missing state, challenge, or port", () => {
-    expect(readConnectAuthorizeRequest(new URL("https://www.lxobsidianportal.co.za/connect"))).toBeNull();
     expect(
-      readConnectAuthorizeRequest(new URL("https://www.lxobsidianportal.co.za/connect#state=abc&port=34338")),
+      readConnectAuthorizeRequest(new URL("https://www.lxobsidianportal.co.za/connect")),
     ).toBeNull();
     expect(
-      readConnectAuthorizeRequest(new URL("https://www.lxobsidianportal.co.za/connect#challenge=abc&port=34338")),
+      readConnectAuthorizeRequest(
+        new URL("https://www.lxobsidianportal.co.za/connect#state=abc&port=34338"),
+      ),
     ).toBeNull();
     expect(
-      readConnectAuthorizeRequest(new URL("https://www.lxobsidianportal.co.za/connect#state=abc&challenge=abc")),
+      readConnectAuthorizeRequest(
+        new URL("https://www.lxobsidianportal.co.za/connect#challenge=abc&port=34338"),
+      ),
+    ).toBeNull();
+    expect(
+      readConnectAuthorizeRequest(
+        new URL("https://www.lxobsidianportal.co.za/connect#state=abc&challenge=abc"),
+      ),
     ).toBeNull();
   });
 

@@ -269,7 +269,8 @@ export function resolveMacBundleInfoPlistStrings(executableName) {
     CFBundleIconFile: "icon.icns",
     NSScreenCaptureUsageDescription:
       "LX Obsidian CLI captures the active window when you use the snapshot shortcut.",
-    NSDocumentsFolderUsageDescription: "LX Obsidian CLI reads project files you open in the desktop app.",
+    NSDocumentsFolderUsageDescription:
+      "LX Obsidian CLI reads project files you open in the desktop app.",
   };
 }
 

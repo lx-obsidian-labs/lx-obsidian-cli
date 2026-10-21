@@ -148,9 +148,9 @@ describe("changeRequestWebUrl", () => {
 
 describe("parsePullRequestReference", () => {
   it("accepts GitHub pull request URLs", () => {
-    expect(parsePullRequestReference("https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/42")).toBe(
-      "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/42",
-    );
+    expect(
+      parsePullRequestReference("https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/42"),
+    ).toBe("https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/42");
   });
 
   it("accepts Azure DevOps pull request URLs", () => {
@@ -189,7 +189,9 @@ describe("parsePullRequestReference", () => {
 
   it("accepts gh pr checkout commands with GitHub pull request URLs", () => {
     expect(
-      parsePullRequestReference("gh pr checkout https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/42"),
+      parsePullRequestReference(
+        "gh pr checkout https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/42",
+      ),
     ).toBe("https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/42");
   });
 

@@ -128,7 +128,9 @@ export const makeAcpMcpOverAcpBridge = Effect.fn("AcpMcpOverAcpBridge.make")(fun
             () => response.body?.cancel().catch(() => undefined) ?? Promise.resolve(),
           );
           return yield* Effect.fail(
-            new AcpMcpOverAcpError(`LX Obsidian CLI MCP endpoint responded with HTTP ${response.status}.`),
+            new AcpMcpOverAcpError(
+              `LX Obsidian CLI MCP endpoint responded with HTTP ${response.status}.`,
+            ),
           );
         }
         const payloads = [...(yield* Stream.runCollect(responsePayloads(response, bridgeError)))];

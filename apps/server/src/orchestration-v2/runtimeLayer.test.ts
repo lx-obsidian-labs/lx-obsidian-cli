@@ -2298,7 +2298,11 @@ it.layer(layerTest)("OrchestrationV2LayerLive lifecycle", (it) => {
       const linked = yield* orchestrator.getThreadShell(threadId);
       assert.deepEqual(
         linked?.pullRequests?.map(({ host, repository, number }) => ({ host, repository, number })),
-        [1, 2].map((number) => ({ host: "github.com", repository: "lx-obsidian-labs/lx-obsidian-cli", number })),
+        [1, 2].map((number) => ({
+          host: "github.com",
+          repository: "lx-obsidian-labs/lx-obsidian-cli",
+          number,
+        })),
       );
       yield* orchestrator.dispatch({
         type: "thread.pull-request.unlink",
@@ -2475,7 +2479,10 @@ it.layer(layerTest)("OrchestrationV2LayerLive lifecycle", (it) => {
           ...key,
           number,
           watching: true,
-          link: { url: `https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/${number}`, source: "agent" },
+          link: {
+            url: `https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/${number}`,
+            source: "agent",
+          },
         });
       }
       const before = yield* orchestrator.getThreadShell(threadId);
@@ -2577,7 +2584,10 @@ it.layer(layerTest)("OrchestrationV2LayerLive lifecycle", (it) => {
         repository: "lx-obsidian-labs/lx-obsidian-cli",
         number: 7,
         watching: true,
-        link: { url: "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/7", source: "agent" as const },
+        link: {
+          url: "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/7",
+          source: "agent" as const,
+        },
       };
       const watched = Effect.map(
         orchestrator.getThreadShell(threadId),
@@ -2643,7 +2653,10 @@ it.layer(layerTest)("OrchestrationV2LayerLive lifecycle", (it) => {
         repository: "lx-obsidian-labs/lx-obsidian-cli",
         number: 8,
         watching: true,
-        link: { url: "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/8", source: "agent" },
+        link: {
+          url: "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/8",
+          source: "agent",
+        },
       });
       const reactor = yield* PullRequestWatchReactor.make.pipe(
         Effect.provide(
@@ -2708,7 +2721,10 @@ it.layer(layerTest)("OrchestrationV2LayerLive lifecycle", (it) => {
               repository: "lx-obsidian-labs/lx-obsidian-cli",
               number: 9,
               watching: true,
-              link: { url: "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/9", source: "agent" },
+              link: {
+                url: "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/9",
+                source: "agent",
+              },
             });
           });
         for (const threadId of threadIds) yield* watchFrom(threadId);
@@ -2846,7 +2862,10 @@ it.layer(layerTest)("OrchestrationV2LayerLive lifecycle", (it) => {
           repository: "lx-obsidian-labs/lx-obsidian-cli",
           number: 12,
           watching: on,
-          link: { url: "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/12", source: "agent" },
+          link: {
+            url: "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/12",
+            source: "agent",
+          },
         });
       yield* watch(true, "start");
 
@@ -2936,7 +2955,11 @@ it.layer(layerTest)("OrchestrationV2LayerLive lifecycle", (it) => {
         branch: null,
         worktreePath: null,
       });
-      const key = { host: "github.com", repository: "lx-obsidian-labs/lx-obsidian-cli", number: 13 };
+      const key = {
+        host: "github.com",
+        repository: "lx-obsidian-labs/lx-obsidian-cli",
+        number: 13,
+      };
       const watch = (id: string) =>
         orchestrator.dispatch({
           type: "thread.pull-request.watch",
@@ -2944,7 +2967,10 @@ it.layer(layerTest)("OrchestrationV2LayerLive lifecycle", (it) => {
           threadId,
           ...key,
           watching: true,
-          link: { url: "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/13", source: "agent" },
+          link: {
+            url: "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/13",
+            source: "agent",
+          },
         });
       const watchOf = Effect.map(
         orchestrator.getThreadShell(threadId),
@@ -3051,7 +3077,11 @@ it.layer(layerTest)("OrchestrationV2LayerLive lifecycle", (it) => {
         branch: null,
         worktreePath: null,
       });
-      const key = { host: "github.com", repository: "lx-obsidian-labs/lx-obsidian-cli", number: 14 };
+      const key = {
+        host: "github.com",
+        repository: "lx-obsidian-labs/lx-obsidian-cli",
+        number: 14,
+      };
       const url = "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/14";
       const watchOf = Effect.map(
         orchestrator.getThreadShell(threadId),
@@ -3126,7 +3156,11 @@ it.layer(layerTest)("OrchestrationV2LayerLive lifecycle", (it) => {
         branch: null,
         worktreePath: null,
       });
-      const key = { host: "github.com", repository: "lx-obsidian-labs/lx-obsidian-cli", number: 11 };
+      const key = {
+        host: "github.com",
+        repository: "lx-obsidian-labs/lx-obsidian-cli",
+        number: 11,
+      };
       const watching = (on: boolean, id: string) =>
         orchestrator.dispatch({
           type: "thread.pull-request.watch",
@@ -3134,7 +3168,10 @@ it.layer(layerTest)("OrchestrationV2LayerLive lifecycle", (it) => {
           threadId,
           ...key,
           watching: on,
-          link: { url: "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/11", source: "agent" },
+          link: {
+            url: "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/11",
+            source: "agent",
+          },
         });
       yield* watching(true, "start");
 
@@ -3229,7 +3266,10 @@ it.layer(layerTest)("OrchestrationV2LayerLive lifecycle", (it) => {
         repository: "lx-obsidian-labs/lx-obsidian-cli",
         number: 11,
         watching: true,
-        link: { url: "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/11", source: "agent" },
+        link: {
+          url: "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/11",
+          source: "agent",
+        },
       });
 
       let fingerprint: { status: string; remarks: string } | "rate-limited" = {
@@ -3396,7 +3436,10 @@ it.layer(layerTest)("OrchestrationV2LayerLive lifecycle", (it) => {
           repository: "lx-obsidian-labs/lx-obsidian-cli",
           number: 12,
           watching: true,
-          link: { url: "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/12", source: "agent" },
+          link: {
+            url: "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/12",
+            source: "agent",
+          },
         });
         const reply: PullRequestComment = {
           id: "reply-11",

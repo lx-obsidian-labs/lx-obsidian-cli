@@ -2385,7 +2385,10 @@ describe("AcpAdapterV2", () => {
       assert.deepEqual(webItem("grok-web-search", "completed"), {
         title: "Web search: t3 code",
         patterns: ["t3 code"],
-        results: [{ url: "https://www.lxobsidianportal.co.za" }, { url: "https://github.com/lx-obsidian-labs/lx-obsidian-cli" }],
+        results: [
+          { url: "https://www.lxobsidianportal.co.za" },
+          { url: "https://github.com/lx-obsidian-labs/lx-obsidian-cli" },
+        ],
       });
       assert.deepEqual(webItem("grok-web-fetch", "completed")?.results, [
         { url: "https://www.lxobsidianportal.co.za", snippet: "LX Obsidian CLI page" },

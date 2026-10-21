@@ -3127,9 +3127,10 @@ export const make = Effect.fn("OpenCode2Adapter.make")(function* (instanceId: Pr
             Effect.timeout(INVENTORY_TIMEOUT),
             Effect.as(true),
             Effect.catchCause((cause) =>
-              Effect.logWarning("Could not add LX Obsidian CLI's MCP server to OpenCode.", cause).pipe(
-                Effect.as(false),
-              ),
+              Effect.logWarning(
+                "Could not add LX Obsidian CLI's MCP server to OpenCode.",
+                cause,
+              ).pipe(Effect.as(false)),
             ),
           );
         if (mcpAvailable) state.mcp = wanted;
