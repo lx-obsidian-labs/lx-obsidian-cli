@@ -1618,7 +1618,7 @@ describe("relay routing fallback", () => {
 });
 
 describe("relay CORS", () => {
-  const origin = "https://app.t3.codes";
+  const origin = "https://www.lxobsidianportal.co.za";
 
   class HandlerFailed extends Data.TaggedError("HandlerFailed") {}
 

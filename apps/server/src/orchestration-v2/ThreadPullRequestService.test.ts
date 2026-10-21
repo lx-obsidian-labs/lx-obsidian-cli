@@ -50,14 +50,14 @@ describe("ThreadPullRequestServiceV2 project guard", () => {
           resolve: (root) => {
             resolvedRoot = root;
             return Effect.succeed({
-              canonicalKey: "github.com/pingdotgg/t3code",
+              canonicalKey: "github.com/lx-obsidian-labs/lx-obsidian-cli",
               locator: {
                 source: "git-remote" as const,
                 remoteName: "origin",
-                remoteUrl: "git@github.com:pingdotgg/t3code.git",
+                remoteUrl: "git@github.com:lx-obsidian-labs/lx-obsidian-cli.git",
               },
               provider: "github" as const,
-              displayName: "pingdotgg/t3code",
+              displayName: "lx-obsidian-labs/lx-obsidian-cli",
               owner: "pingdotgg",
               name: "t3code",
             });
@@ -65,8 +65,8 @@ describe("ThreadPullRequestServiceV2 project guard", () => {
         },
       );
       expect(resolvedRoot).toBe("/workspace/project");
-      expect(result.repository).toBe("pingdotgg/t3code");
-      expect(result.project.repositoryIdentity?.canonicalKey).toBe("github.com/pingdotgg/t3code");
+      expect(result.repository).toBe("lx-obsidian-labs/lx-obsidian-cli");
+      expect(result.project.repositoryIdentity?.canonicalKey).toBe("github.com/lx-obsidian-labs/lx-obsidian-cli");
     }),
   );
 

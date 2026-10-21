@@ -266,7 +266,7 @@ it.layer(layerTest)("LegacyV1ThreadImporter", (it) => {
           '2026-01-04T00:00:00.000Z',
           '2026-01-02T00:00:00.000Z',
           'm',
-          '{"projectId":"project:legacy-import","repository":"pingdotgg/t3code","number":9000,"url":"https://github.com/pingdotgg/t3code/pull/9000"}',
+          '{"projectId":"project:legacy-import","repository":"lx-obsidian-labs/lx-obsidian-cli","number":9000,"url":"https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/9000"}',
           NULL
         )
       `;
@@ -357,12 +357,12 @@ it.layer(layerTest)("LegacyV1ThreadImporter", (it) => {
         INSERT INTO projection_thread_pull_requests (
           thread_id, host, repository, number, url, source, linked_at, snapshot_json
         ) VALUES
-          (${threadId}, 'github.com', 'pingdotgg/t3code', 9002,
-            'https://github.com/pingdotgg/t3code/pull/9002', 'created',
+          (${threadId}, 'github.com', 'lx-obsidian-labs/lx-obsidian-cli', 9002,
+            'https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/9002', 'created',
             '2026-01-03T00:00:00.000Z',
             '{"state":"open","title":"Second PR","headBranch":"feature-two","baseBranch":"main","isDraft":false,"updatedAt":"2026-01-03T00:00:00.000Z","syncedAt":"2026-01-03T00:00:00.000Z"}'),
-          (${threadId}, 'github.com', 'pingdotgg/t3code', 9003,
-            'https://github.com/pingdotgg/t3code/pull/9003', 'manual',
+          (${threadId}, 'github.com', 'lx-obsidian-labs/lx-obsidian-cli', 9003,
+            'https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/9003', 'manual',
             '2026-01-04T00:00:00.000Z', NULL)
       `;
 
@@ -409,7 +409,7 @@ it.layer(layerTest)("LegacyV1ThreadImporter", (it) => {
       assert.deepStrictEqual(
         (yield* listLinkedPullRequestThreads({
           host: "github.com",
-          repository: "pingdotgg/t3code",
+          repository: "lx-obsidian-labs/lx-obsidian-cli",
           number: 9002,
         })).threads.map((thread) => thread.id),
         [threadId],
@@ -616,8 +616,8 @@ it.layer(layerTest)("LegacyV1ThreadImporter", (it) => {
           '2026-01-01T00:00:00.000Z',
           '2026-01-02T00:00:00.000Z',
           'm',
-          '{"projectId":"project:legacy-metadata-upgrade","repository":"pingdotgg/t3code","number":9000,"url":"https://github.com/pingdotgg/t3code/pull/9000"}',
-          '{"projectId":"project:legacy-metadata-upgrade","repository":"pingdotgg/t3code","number":9001,"url":"https://github.com/pingdotgg/t3code/pull/9001"}',
+          '{"projectId":"project:legacy-metadata-upgrade","repository":"lx-obsidian-labs/lx-obsidian-cli","number":9000,"url":"https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/9000"}',
+          '{"projectId":"project:legacy-metadata-upgrade","repository":"lx-obsidian-labs/lx-obsidian-cli","number":9001,"url":"https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/9001"}',
           'az'
         )
       `;

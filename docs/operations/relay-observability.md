@@ -1,6 +1,6 @@
 # Relay observability
 
-> For maintainers. Using T3 Code? See [docs/user](../user/).
+> For maintainers. Using LX Obsidian CLI? See [docs/user](../user/).
 
 The relay Alchemy stack owns a shared Axiom trace setup:
 
@@ -145,7 +145,7 @@ when they are frequent enough to stall provisioning. Compare the call volume on 
 account limit.
 
 **Traffic dropped.** The Worker is down, a deploy broke it, or spans stopped reaching Axiom. Check
-`https://relay.t3.codes/health` first.
+`https://www.lxobsidianportal.co.za/health` first.
 
 **Tunnel cleanup stopped / tunnel deletions failing.** Warnings for the five-minute reaper that deletes
 idle Cloudflare tunnels. "Stopped" counts sweeps that finished, so it also fires when every sweep

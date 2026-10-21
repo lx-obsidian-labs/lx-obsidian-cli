@@ -78,16 +78,16 @@ describe("load balancing shared project machines", () => {
   });
 });
 const repositoryIdentity = {
-  canonicalKey: "github.com/t3tools/t3code",
+  canonicalKey: "github.com/lx-obsidian-labs/lx-obsidian-cli",
   locator: {
     source: "git-remote" as const,
     remoteName: "upstream",
-    remoteUrl: "https://github.com/t3tools/t3code.git",
+    remoteUrl: "https://github.com/lx-obsidian-labs/lx-obsidian-cli.git",
   },
   provider: "github",
   owner: "t3tools",
   name: "t3code",
-  displayName: "T3 Code",
+  displayName: "LX Obsidian CLI",
 };
 
 function makeProject(
@@ -282,7 +282,7 @@ describe("buildProjectGroups", () => {
     ];
 
     expect(buildProjectGroups({ projects, settings: settings("repository") })[0]?.label).toBe(
-      "T3 Code",
+      "LX Obsidian CLI",
     );
   });
 
@@ -303,7 +303,7 @@ describe("buildProjectGroups", () => {
 
     const groups = buildProjectGroups({ projects, settings: settings("repository") });
     expect(groups.map((group) => group.key)).toEqual([
-      "github.com/t3tools/t3code",
+      "github.com/lx-obsidian-labs/lx-obsidian-cli",
       "github.com/julius/t3code-fork",
     ]);
     expect(groups[1]?.members.map((member) => member.project.id)).toEqual(["fork", "fork-2"]);

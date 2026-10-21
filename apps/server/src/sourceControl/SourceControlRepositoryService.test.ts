@@ -258,7 +258,7 @@ it.effect("keeps arbitrary Bitbucket request failures out of the repository mess
       const error = yield* Effect.flip(
         service.lookupRepository({
           provider: SourceControlProviderKind.make("bitbucket"),
-          repository: "pingdotgg/t3code",
+          repository: "lx-obsidian-labs/lx-obsidian-cli",
           cwd: "/workspace",
         }),
       );

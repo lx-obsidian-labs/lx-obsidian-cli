@@ -485,9 +485,9 @@ describe("applyShellStreamEvent", () => {
 describe("reuseUnchangedThreadShells", () => {
   const link: ThreadPullRequestLink = {
     host: "github.com",
-    repository: "pingdotgg/t3code",
+    repository: "lx-obsidian-labs/lx-obsidian-cli",
     number: 3,
-    url: "https://github.com/pingdotgg/t3code/pull/3",
+    url: "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/3",
     source: "agent",
     linkedAt: "2026-06-20T00:00:00.000Z",
     snapshot: null,
@@ -554,7 +554,7 @@ describe("reuseUnchangedThreadShells", () => {
   it("keeps explicitly refreshed links instead of the previous links", () => {
     const updated = {
       ...linked,
-      pullRequests: [{ ...link, number: 4, url: "https://github.com/pingdotgg/t3code/pull/4" }],
+      pullRequests: [{ ...link, number: 4, url: "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/4" }],
     };
     const incoming = { ...v2ShellSnapshot, threads: [updated] };
     const next = reuseUnchangedThreadShells({ ...v2ShellSnapshot, threads: [linked] }, incoming);

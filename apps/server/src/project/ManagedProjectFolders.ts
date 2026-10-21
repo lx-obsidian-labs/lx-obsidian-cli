@@ -183,7 +183,7 @@ function namedProjectReadme(name: string): string {
     "",
     `# ${name}`,
     "",
-    "Created in [T3 Code](https://t3.codes).",
+    "Created in [LX Obsidian CLI](https://www.lxobsidianportal.co.za).",
     "",
   ].join("\n");
 }

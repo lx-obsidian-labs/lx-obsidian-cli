@@ -78,16 +78,16 @@ describe("resolveSidebarRowAccessibility", () => {
     {
       title: "Can you audit the UI?",
       statusLabel: "Working",
-      projectDisplayName: "T3 Code",
+      projectDisplayName: "LX Obsidian CLI",
       isActive: true,
-      expected: { label: "Can you audit the UI?, Working, T3 Code", current: "page" },
+      expected: { label: "Can you audit the UI?, Working, LX Obsidian CLI", current: "page" },
     },
     {
       title: "The audit is done",
       statusLabel: null,
-      projectDisplayName: "T3 Code",
+      projectDisplayName: "LX Obsidian CLI",
       isActive: false,
-      expected: { label: "The audit is done, T3 Code", current: undefined },
+      expected: { label: "The audit is done, LX Obsidian CLI", current: undefined },
     },
     {
       title: "Untitled task",
@@ -1044,14 +1044,14 @@ describe("resolveSidebarThreadStatus", () => {
 describe("pullRequestMatchesSearchQuery", () => {
   const branchPullRequest = {
     projectId: ProjectId.make("project"),
-    repository: "pingdotgg/t3code",
+    repository: "lx-obsidian-labs/lx-obsidian-cli",
     number: 123,
-    url: "https://github.com/pingdotgg/t3code/pull/123",
+    url: "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/123",
   };
 
   it("matches when every query token appears in the PR's terms", () => {
     expect(pullRequestMatchesSearchQuery({ branchPullRequest }, "123")).toBe(true);
-    expect(pullRequestMatchesSearchQuery({ branchPullRequest }, "pingdotgg/t3code #123")).toBe(
+    expect(pullRequestMatchesSearchQuery({ branchPullRequest }, "lx-obsidian-labs/lx-obsidian-cli #123")).toBe(
       true,
     );
   });

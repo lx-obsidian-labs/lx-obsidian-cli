@@ -19,13 +19,13 @@ import {
 describe("normalizeGitRemoteUrl", () => {
   it("canonicalizes equivalent GitHub remotes across protocol variants", () => {
     expect(normalizeGitRemoteUrl("git@github.com:T3Tools/T3Code.git")).toBe(
-      "github.com/t3tools/t3code",
+      "github.com/lx-obsidian-labs/lx-obsidian-cli",
     );
     expect(normalizeGitRemoteUrl("https://github.com/T3Tools/T3Code.git")).toBe(
-      "github.com/t3tools/t3code",
+      "github.com/lx-obsidian-labs/lx-obsidian-cli",
     );
     expect(normalizeGitRemoteUrl("ssh://git@github.com/T3Tools/T3Code")).toBe(
-      "github.com/t3tools/t3code",
+      "github.com/lx-obsidian-labs/lx-obsidian-cli",
     );
   });
 
@@ -90,7 +90,7 @@ describe("normalizeGitRemoteUrl", () => {
       "ssh.dev.azure.com/v4/t3tools/platform/t3code",
     );
     expect(normalizeGitRemoteUrl("git@ssh.dev.azure.com:v3/T3Tools/T3Code")).toBe(
-      "ssh.dev.azure.com/v3/t3tools/t3code",
+      "ssh.dev.azure.com/v3/lx-obsidian-labs/lx-obsidian-cli",
     );
   });
 });
@@ -103,12 +103,12 @@ describe("parseOriginUrlFromGitConfig", () => {
       '[remote "upstream"]',
       "\turl = https://github.com/other/repo.git",
       '[remote "origin"]',
-      "\turl = git@github.com:pingdotgg/t3code.git",
+      "\turl = git@github.com:lx-obsidian-labs/lx-obsidian-cli.git",
       "\tfetch = +refs/heads/*:refs/remotes/origin/*",
       '[branch "main"]',
       "\tremote = origin",
     ].join("\n");
-    expect(parseOriginUrlFromGitConfig(config)).toBe("git@github.com:pingdotgg/t3code.git");
+    expect(parseOriginUrlFromGitConfig(config)).toBe("git@github.com:lx-obsidian-labs/lx-obsidian-cli.git");
   });
 
   it("strips inline comments and quotes from the url value", () => {

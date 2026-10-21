@@ -498,7 +498,7 @@ const layerTest = (
           DesktopEnvironment.DesktopEnvironment,
           DesktopEnvironment.DesktopEnvironment.of({
             platform,
-            displayName: "T3 Code (Dev)",
+            displayName: "LX Obsidian CLI (Dev)",
             stateDir: "/state",
             linuxDesktopEntryName: "com.t3tools.T3Code.desktop",
             appRoot: "/repo",
@@ -1000,9 +1000,9 @@ it.effect.each(["win32", "darwin", "linux"] as const)(
     const bounds = { x: 10, y: 20, width: 800, height: 600 };
     const t3 = {
       id: 42,
-      title: "T3 Code",
+      title: "LX Obsidian CLI",
       appIdentifier: "com.t3tools.T3Code.desktop",
-      owner: { name: "T3 Code", processId: 123 },
+      owner: { name: "LX Obsidian CLI", processId: 123 },
       bounds,
       png: Buffer.from([1, 2, 3]),
     };
@@ -1676,7 +1676,7 @@ it.effect(
     focusedWindowMock.mockReturnValue(undefined);
     const destination = {
       getBounds: () => ({ x: 0, y: 0, width: 1000, height: 800 }),
-      getTitle: () => "T3 Code",
+      getTitle: () => "LX Obsidian CLI",
       isDestroyed: () => false,
       isVisible: () => true,
       isMinimized: () => false,
@@ -1692,7 +1692,7 @@ it.effect(
         const warning = logs.find(
           (message) =>
             Array.isArray(message) &&
-            message[0] === "The compositor could not activate T3 Code after the snapshot",
+            message[0] === "The compositor could not activate LX Obsidian CLI after the snapshot",
         );
         assert.strictEqual(Array.isArray(warning) ? warning[1] : undefined, activationFailure);
         const pending = yield* decodePendingMetadata(saved);
@@ -2729,7 +2729,7 @@ it.each([
   ["com.google.Chrome", "Google Chrome – Profile"],
   ["org.chromium.Chromium", "Chromium"],
 ])("reads macOS %s page context with an accessibility title suffix", async (bundleId, suffix) => {
-  const title = "Issues · pingdotgg/t3code";
+  const title = "Issues · lx-obsidian-labs/lx-obsidian-cli";
   const bounds = { x: 0, y: 33, width: 1470, height: 857 };
   const window = {
     role: "window",
@@ -2759,7 +2759,7 @@ it.each([
 });
 
 it("does not borrow another Chrome process context when the captured PID has no windows", async () => {
-  const title = "Issues · pingdotgg/t3code";
+  const title = "Issues · lx-obsidian-labs/lx-obsidian-cli";
   const bounds = { x: 0, y: 33, width: 1470, height: 857 };
   const otherWindow = {
     role: "window",
@@ -3291,7 +3291,7 @@ it.effect("flags revoked macOS permissions on read and re-registers once they re
       const revoked = yield* service.state;
       assert.equal(
         revoked.message,
-        "Allow Screen Recording in System Settings, then restart T3 Code.",
+        "Allow Screen Recording in System Settings, then restart LX Obsidian CLI.",
       );
       assert.deepEqual(revoked.macPermissions, { screenRecording: false, accessibility: true });
 
@@ -3304,7 +3304,7 @@ it.effect("flags revoked macOS permissions on read and re-registers once they re
       const blocked = yield* service.state;
       assert.equal(
         blocked.message,
-        "Allow Screen Recording in System Settings, then restart T3 Code.",
+        "Allow Screen Recording in System Settings, then restart LX Obsidian CLI.",
       );
       assert.isFalse(blocked.shortcutRegistered);
 
@@ -4010,7 +4010,7 @@ it.effect.each([false, true])(
       platform: "macos",
       id: 42,
       title: "Setup",
-      owner: { name: "T3 Code", processId: 123, path: "/Applications/T3 Code.app" },
+      owner: { name: "LX Obsidian CLI", processId: 123, path: "/Applications/LX Obsidian CLI.app" },
       bounds: { x: 0, y: 0, width: 800, height: 600 },
     };
     activeWindowMock.mockReset().mockResolvedValue(active);
@@ -4027,7 +4027,7 @@ it.effect.each([false, true])(
           assert.equal(error.reason, "setup-failed");
           assert.equal(
             error.message,
-            'Could not capture a test snapshot. Capturing the window failed. macOS grants Screen Recording and Accessibility to each app separately. In System Settings, open Privacy & Security and check that "T3 Code (Dev)" is allowed for both.',
+            'Could not capture a test snapshot. Capturing the window failed. macOS grants Screen Recording and Accessibility to each app separately. In System Settings, open Privacy & Security and check that "LX Obsidian CLI (Dev)" is allowed for both.',
           );
         } else yield* service.setup("test-mac-capture");
         assert.equal(macCaptureMock.mock.calls.length, 1);
@@ -4061,7 +4061,7 @@ const macTestCaptureWindow = {
   platform: "macos",
   id: 42,
   title: "Setup",
-  owner: { name: "T3 Code", processId: 123, path: "/Applications/T3 Code.app" },
+  owner: { name: "LX Obsidian CLI", processId: 123, path: "/Applications/LX Obsidian CLI.app" },
   bounds: { x: 0, y: 0, width: 800, height: 600 },
 };
 
@@ -4083,7 +4083,7 @@ it.effect("names the failed macOS window lookup without repeating what it printe
       const error = yield* service.setup("test-mac-capture").pipe(Effect.flip);
       assert.equal(
         error.message,
-        'Could not capture a test snapshot. Finding the front window failed: osascript exited with code 1. macOS grants Screen Recording and Accessibility to each app separately. In System Settings, open Privacy & Security and check that "T3 Code (Dev)" is allowed for both.',
+        'Could not capture a test snapshot. Finding the front window failed: osascript exited with code 1. macOS grants Screen Recording and Accessibility to each app separately. In System Settings, open Privacy & Security and check that "LX Obsidian CLI (Dev)" is allowed for both.',
       );
       assert.include(String(error.cause), stderr);
       assert.equal(macCaptureMock.mock.calls.length, 0);
@@ -4122,7 +4122,7 @@ it.effect("says when the macOS test capture command timed out", () => {
       const error = yield* service.setup("test-mac-capture").pipe(Effect.flip);
       assert.equal(
         error.message,
-        'Could not capture a test snapshot. Capturing the window timed out. macOS grants Screen Recording and Accessibility to each app separately. In System Settings, open Privacy & Security and check that "T3 Code (Dev)" is allowed for both.',
+        'Could not capture a test snapshot. Capturing the window timed out. macOS grants Screen Recording and Accessibility to each app separately. In System Settings, open Privacy & Security and check that "LX Obsidian CLI (Dev)" is allowed for both.',
       );
     }),
   ).pipe(Effect.provide(macTestCaptureLayer));

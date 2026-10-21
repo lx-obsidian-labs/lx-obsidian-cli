@@ -99,7 +99,7 @@ it.layer(NodeServices.layer)("RepositoryIdentityResolverLive", (it) => {
       yield* TestClock.adjust(Duration.minutes(10));
       const second = yield* resolver.resolve("/repo/packages/web");
 
-      expect(first?.canonicalKey).toBe("github.com/t3tools/t3code");
+      expect(first?.canonicalKey).toBe("github.com/lx-obsidian-labs/lx-obsidian-cli");
       expect(second).toEqual(first);
       expect(refinements).toBe(1);
       expect(calls).toEqual([
@@ -168,7 +168,7 @@ it.layer(NodeServices.layer)("RepositoryIdentityResolverLive", (it) => {
       yield* TestClock.adjust(Duration.minutes(1));
       const recovered = yield* resolver.resolve("/repo/packages/web");
       expect(recovered?.rootPath).toBe("/repo");
-      expect(recovered?.canonicalKey).toBe("github.com/t3tools/t3code");
+      expect(recovered?.canonicalKey).toBe("github.com/lx-obsidian-labs/lx-obsidian-cli");
     }).pipe(Effect.provide(Layer.merge(TestClock.layer(), layerResolver)));
   });
 
@@ -233,7 +233,7 @@ it.layer(NodeServices.layer)("RepositoryIdentityResolverLive", (it) => {
       const resolvedCwd = NodeFS.realpathSync.native(cwd);
 
       expect(identity).not.toBeNull();
-      expect(identity?.canonicalKey).toBe("github.com/t3tools/t3code");
+      expect(identity?.canonicalKey).toBe("github.com/lx-obsidian-labs/lx-obsidian-cli");
       expect(normalizeResolvedPath(resolvedIdentityRoot)).toBe(normalizeResolvedPath(resolvedCwd));
       expect(identity?.displayName).toBe("T3Tools/t3code");
       expect(identity?.provider).toBe("github");
@@ -261,7 +261,7 @@ it.layer(NodeServices.layer)("RepositoryIdentityResolverLive", (it) => {
 
       const resolver = yield* RepositoryIdentityResolver.RepositoryIdentityResolver;
       const identity = yield* resolver.resolve(cwd);
-      expect(identity?.canonicalKey).toBe("github.com/t3tools/t3code");
+      expect(identity?.canonicalKey).toBe("github.com/lx-obsidian-labs/lx-obsidian-cli");
       expect(identity?.locator.remoteUrl).toBe("git@github.com:T3Tools/t3code.git");
       expect(identity?.locator.remoteName).toBe("origin");
     }).pipe(Effect.provide(RepositoryIdentityResolver.layer)),
@@ -287,7 +287,7 @@ it.layer(NodeServices.layer)("RepositoryIdentityResolverLive", (it) => {
       const resolvedRepoRoot = NodeFS.realpathSync.native(repoRoot);
 
       expect(identity).not.toBeNull();
-      expect(identity?.canonicalKey).toBe("github.com/t3tools/t3code");
+      expect(identity?.canonicalKey).toBe("github.com/lx-obsidian-labs/lx-obsidian-cli");
       expect(normalizeResolvedPath(resolvedIdentityRoot)).toBe(
         normalizeResolvedPath(resolvedRepoRoot),
       );
@@ -325,7 +325,7 @@ it.layer(NodeServices.layer)("RepositoryIdentityResolverLive", (it) => {
 
         const resolver = yield* RepositoryIdentityResolver.RepositoryIdentityResolver;
         const checkoutIdentity = yield* resolver.resolve(checkout);
-        expect(checkoutIdentity?.canonicalKey).toBe("github.com/t3tools/t3code");
+        expect(checkoutIdentity?.canonicalKey).toBe("github.com/lx-obsidian-labs/lx-obsidian-cli");
         const resolvedBareGitDir = NodeFS.realpathSync.native(bareGitDir);
         const projectRoots = layout === "dot-bare" ? [root, bareGitDir] : [root];
 
@@ -392,7 +392,7 @@ it.layer(NodeServices.layer)("RepositoryIdentityResolverLive", (it) => {
 
       const mixedIdentity = yield* resolver.resolve(mixedDir);
       expect(mixedIdentity?.locator.remoteName).toBe("mirror");
-      expect(mixedIdentity?.canonicalKey).toBe("github.com/t3tools/t3code");
+      expect(mixedIdentity?.canonicalKey).toBe("github.com/lx-obsidian-labs/lx-obsidian-cli");
     }).pipe(Effect.provide(RepositoryIdentityResolver.layer)),
   );
 
@@ -428,7 +428,7 @@ it.layer(NodeServices.layer)("RepositoryIdentityResolverLive", (it) => {
 
         expect(identity).not.toBeNull();
         expect(identity?.locator.remoteName).toBe("upstream");
-        expect(identity?.canonicalKey).toBe("github.com/t3tools/t3code");
+        expect(identity?.canonicalKey).toBe("github.com/lx-obsidian-labs/lx-obsidian-cli");
         expect(identity?.displayName).toBe("T3Tools/t3code");
         expect(yield* resolver.resolve(cwd)).toEqual(identity);
       }).pipe(Effect.provide(RepositoryIdentityResolver.layer)),
@@ -448,7 +448,7 @@ it.layer(NodeServices.layer)("RepositoryIdentityResolverLive", (it) => {
       const resolver = yield* RepositoryIdentityResolver.RepositoryIdentityResolver;
       const identity = yield* resolver.resolve(cwd);
 
-      expect(identity?.canonicalKey).toBe("github.com/t3tools/t3code");
+      expect(identity?.canonicalKey).toBe("github.com/lx-obsidian-labs/lx-obsidian-cli");
       expect(identity?.displayName).toBe("T3Tools/t3code");
       expect(identity?.origin).toEqual({
         canonicalKey: "github.com/julius/t3code-fork",
@@ -504,7 +504,7 @@ it.layer(NodeServices.layer)("RepositoryIdentityResolverLive", (it) => {
 
         const refreshedIdentity = yield* resolver.resolve(cwd);
         expect(refreshedIdentity).not.toBeNull();
-        expect(refreshedIdentity?.canonicalKey).toBe("github.com/t3tools/t3code");
+        expect(refreshedIdentity?.canonicalKey).toBe("github.com/lx-obsidian-labs/lx-obsidian-cli");
         expect(refreshedIdentity?.name).toBe("t3code");
       }).pipe(
         Effect.provide(
@@ -532,19 +532,19 @@ it.layer(NodeServices.layer)("RepositoryIdentityResolverLive", (it) => {
       const resolver = yield* RepositoryIdentityResolver.RepositoryIdentityResolver;
       const initialIdentity = yield* resolver.resolve(cwd);
       expect(initialIdentity).not.toBeNull();
-      expect(initialIdentity?.canonicalKey).toBe("github.com/t3tools/t3code");
+      expect(initialIdentity?.canonicalKey).toBe("github.com/lx-obsidian-labs/lx-obsidian-cli");
 
       yield* git(cwd, ["remote", "set-url", "origin", "git@github.com:T3Tools/t3code-next.git"]);
 
       const cachedIdentity = yield* resolver.resolve(cwd);
       expect(cachedIdentity).not.toBeNull();
-      expect(cachedIdentity?.canonicalKey).toBe("github.com/t3tools/t3code");
+      expect(cachedIdentity?.canonicalKey).toBe("github.com/lx-obsidian-labs/lx-obsidian-cli");
 
       yield* TestClock.adjust(Duration.millis(180));
 
       const refreshedIdentity = yield* resolver.resolve(cwd);
       expect(refreshedIdentity).not.toBeNull();
-      expect(refreshedIdentity?.canonicalKey).toBe("github.com/t3tools/t3code-next");
+      expect(refreshedIdentity?.canonicalKey).toBe("github.com/lx-obsidian-labs/lx-obsidian-cli-next");
       expect(refreshedIdentity?.displayName).toBe("T3Tools/t3code-next");
       expect(refreshedIdentity?.name).toBe("t3code-next");
     }).pipe(

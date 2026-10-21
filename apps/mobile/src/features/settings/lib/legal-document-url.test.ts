@@ -4,17 +4,17 @@ import { isLegalDocumentUrl } from "./legal-document-url";
 
 describe("isLegalDocumentUrl", () => {
   it.each([
-    "https://t3.codes/legal",
-    "https://t3.codes/legal/",
-    "https://t3.codes/privacy-policy?source=app",
-    "https://t3.codes/terms-of-service#updates",
-    "https://t3.codes/security-policy",
+    "https://www.lxobsidianportal.co.za/legal",
+    "https://www.lxobsidianportal.co.za/legal/",
+    "https://www.lxobsidianportal.co.za/privacy-policy?source=app",
+    "https://www.lxobsidianportal.co.za/terms-of-service#updates",
+    "https://www.lxobsidianportal.co.za/security-policy",
   ])("allows a configured legal document: %s", (url) => {
     expect(isLegalDocumentUrl(url)).toBe(true);
   });
 
   it.each([
-    "https://t3.codes/download",
+    "https://www.lxobsidianportal.co.za/download",
     "https://example.com/legal",
     "javascript:alert(1)",
     "not-a-url",

@@ -6749,9 +6749,9 @@ it.layer(layerTest)("ProjectionStoreV2", (it) => {
       });
       const link = {
         host: "github.com",
-        repository: "pingdotgg/t3code",
+        repository: "lx-obsidian-labs/lx-obsidian-cli",
         number: 7,
-        url: "https://github.com/pingdotgg/t3code/pull/7",
+        url: "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/7",
         source: "agent" as const,
         linkedAt: DateTime.formatIso(at),
         snapshot: null,
@@ -6794,7 +6794,7 @@ it.layer(layerTest)("ProjectionStoreV2", (it) => {
       ]);
       assert.deepEqual((yield* store.getThreadShell(threadId))?.pendingBackgroundTasks, [
         {
-          taskId: "pull-request-watch:github.com/pingdotgg/t3code#7",
+          taskId: "pull-request-watch:github.com/lx-obsidian-labs/lx-obsidian-cli#7",
           description: "Watching pull request #7",
           kind: "monitor",
         },
