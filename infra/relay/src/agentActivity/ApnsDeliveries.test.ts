@@ -77,7 +77,7 @@ const state: RelayAgentActivityState = {
 };
 
 const aggregate: RelayAgentActivityAggregateState = {
-  title: "T3 Code",
+  title: "LX Obsidian CLI",
   subtitle: "Agent work in progress",
   activeCount: 1,
   updatedAt: state.updatedAt,

@@ -14,7 +14,7 @@ describe("buildT3ProjectFileJsonSchema", () => {
     const schema = buildT3ProjectFileJsonSchema();
 
     expect(schema.$schema).toBe("https://json-schema.org/draft/2020-12/schema");
-    expect(schema.$id).toBe("https://t3.codes/schema/t3.json");
+    expect(schema.$id).toBe("https://www.lxobsidianportal.co.za/schema/t3.json");
     expect(schema.type).toBe("object");
     expect(schema.additionalProperties).toBe(false);
   });
@@ -85,7 +85,7 @@ describe("parseT3ProjectFile", () => {
   it("reads project defaults from JSONC with a URL in a block comment", () => {
     expect(
       parseT3ProjectFile(`{
-        /* See https://t3.codes/schema/t3.json */
+        /* See https://www.lxobsidianportal.co.za/schema/t3.json */
         "defaultThreadEnvMode": "worktree"
       }`),
     ).toEqual({ defaultThreadEnvMode: "worktree" });

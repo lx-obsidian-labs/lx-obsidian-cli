@@ -18,7 +18,7 @@ const repoEnv = loadRepoEnv();
 const cliBuildChannel = /^[^-+]+-(?:nightly|preview)\./.test(packageJson.version)
   ? "nightly"
   : "latest";
-// Sent with every analytics event. Release workflows set it for pingdotgg/t3code
+// Sent with every analytics event. Release workflows set it for lx-obsidian-labs/lx-obsidian-cli
 // builds only, so local builds and forks report "dev". A typo fails the build
 // instead of mislabeling events.
 const TELEMETRY_CHANNELS = ["stable", "nightly", "preview", "dev"];

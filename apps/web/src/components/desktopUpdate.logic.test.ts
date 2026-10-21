@@ -203,8 +203,8 @@ describe("getDesktopUpdateActionError", () => {
 
 describe("desktop update UI helpers", () => {
   it("builds the stable release URL for a downloaded version", () => {
-    expect(getDesktopUpdateReleaseUrl("0.0.30", "pingdotgg/t3code")).toBe(
-      "https://github.com/pingdotgg/t3code/releases/tag/v0.0.30",
+    expect(getDesktopUpdateReleaseUrl("0.0.30", "lx-obsidian-labs/lx-obsidian-cli")).toBe(
+      "https://github.com/lx-obsidian-labs/lx-obsidian-cli/releases/tag/v0.0.30",
     );
   });
 
@@ -225,16 +225,16 @@ describe("desktop update UI helpers", () => {
     "owner/repo?tab=notes",
   ])("falls back to upstream for an invalid configured repository: %s", (repository) => {
     expect(getDesktopUpdateReleaseHistoryUrl(repository)).toBe(
-      "https://github.com/pingdotgg/t3code/releases",
+      "https://github.com/lx-obsidian-labs/lx-obsidian-cli/releases",
     );
     expect(getDesktopUpdateReleaseUrl("1.2.3", repository)).toBe(
-      "https://github.com/pingdotgg/t3code/releases/tag/v1.2.3",
+      "https://github.com/lx-obsidian-labs/lx-obsidian-cli/releases/tag/v1.2.3",
     );
   });
 
   it("builds the nightly release URL without dropping its version suffix", () => {
-    expect(getDesktopUpdateReleaseUrl("0.0.30-nightly.20260728.931", "pingdotgg/t3code")).toBe(
-      "https://github.com/pingdotgg/t3code/releases/tag/v0.0.30-nightly.20260728.931",
+    expect(getDesktopUpdateReleaseUrl("0.0.30-nightly.20260728.931", "lx-obsidian-labs/lx-obsidian-cli")).toBe(
+      "https://github.com/lx-obsidian-labs/lx-obsidian-cli/releases/tag/v0.0.30-nightly.20260728.931",
     );
   });
 
@@ -244,8 +244,8 @@ describe("desktop update UI helpers", () => {
   });
 
   it("builds the release history URL", () => {
-    expect(getDesktopUpdateReleaseHistoryUrl("pingdotgg/t3code")).toBe(
-      "https://github.com/pingdotgg/t3code/releases",
+    expect(getDesktopUpdateReleaseHistoryUrl("lx-obsidian-labs/lx-obsidian-cli")).toBe(
+      "https://github.com/lx-obsidian-labs/lx-obsidian-cli/releases",
     );
   });
 
@@ -305,7 +305,7 @@ describe("desktop update UI helpers", () => {
         availableVersion: "1.1.0",
         downloadedVersion: "1.1.1",
       }),
-    ).toContain("Install update 1.1.1 and restart T3 Code?");
+    ).toContain("Install update 1.1.1 and restart LX Obsidian CLI?");
   });
 
   it("falls back to generic install confirmation copy when no version is available", () => {
@@ -314,7 +314,7 @@ describe("desktop update UI helpers", () => {
         availableVersion: null,
         downloadedVersion: null,
       }),
-    ).toContain("Install update and restart T3 Code?");
+    ).toContain("Install update and restart LX Obsidian CLI?");
   });
 
   it("keeps the same install confirmation copy across desktop platforms", () => {
@@ -324,7 +324,7 @@ describe("desktop update UI helpers", () => {
         downloadedVersion: "1.1.0",
       }),
     ).toBe(
-      "Install update 1.1.0 and restart T3 Code?\n\nAny running tasks will be interrupted. Make sure you're ready before continuing.",
+      "Install update 1.1.0 and restart LX Obsidian CLI?\n\nAny running tasks will be interrupted. Make sure you're ready before continuing.",
     );
   });
 });

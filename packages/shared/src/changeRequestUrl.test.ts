@@ -14,7 +14,7 @@ describe("parseChangeRequestUrl", () => {
   it("reads a GitHub pull request, lower-casing the repository", () => {
     expect(parseChangeRequestUrl("https://github.com/T3Tools/T3Code/pull/123")).toEqual({
       host: "github.com",
-      repository: "t3tools/t3code",
+      repository: "lx-obsidian-labs/lx-obsidian-cli",
       number: 123,
     });
   });
@@ -99,25 +99,25 @@ describe("parseChangeRequestUrl", () => {
   });
 
   it("survives trailing segments, a trailing slash and a query string", () => {
-    expect(parseChangeRequestUrl("https://github.com/t3tools/t3code/pull/123/files?w=1")).toEqual({
+    expect(parseChangeRequestUrl("https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/123/files?w=1")).toEqual({
       host: "github.com",
-      repository: "t3tools/t3code",
+      repository: "lx-obsidian-labs/lx-obsidian-cli",
       number: 123,
     });
-    expect(parseChangeRequestUrl("https://github.com/t3tools/t3code/pull/123/")).toEqual({
+    expect(parseChangeRequestUrl("https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/123/")).toEqual({
       host: "github.com",
-      repository: "t3tools/t3code",
+      repository: "lx-obsidian-labs/lx-obsidian-cli",
       number: 123,
     });
   });
 
   it("claims nothing it cannot be sure of", () => {
     for (const link of [
-      "https://github.com/t3tools/t3code/issues/123",
-      "https://github.com/t3tools/t3code/commit/0a1b2c3",
-      "https://github.com/t3tools/t3code",
-      "https://github.com/t3tools/t3code/pull/abc",
-      "https://gitlab.com/t3tools/t3code/-/issues/12",
+      "https://github.com/lx-obsidian-labs/lx-obsidian-cli/issues/123",
+      "https://github.com/lx-obsidian-labs/lx-obsidian-cli/commit/0a1b2c3",
+      "https://github.com/lx-obsidian-labs/lx-obsidian-cli",
+      "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/abc",
+      "https://gitlab.com/lx-obsidian-labs/lx-obsidian-cli/-/issues/12",
       "https://blog.example.test/2026/updates/pull/3",
       "https://scm.example.test/tfs/Collection/Project/_git/Repo",
       "https://scm.example.test/tfs/Collection/Project/pullrequest/123",
@@ -125,7 +125,7 @@ describe("parseChangeRequestUrl", () => {
       "https://scm.example.test/tfs/Collection/Project/_git/Repo/pullrequest/0",
       "https://scm.example.test/tfs/Collection/Project/_git/Repo/pullrequest/9007199254740992",
       "ftp://scm.example.test/tfs/Collection/Project/_git/Repo/pullrequest/123",
-      "javascript:alert(1)//github.com/t3tools/t3code/pull/1",
+      "javascript:alert(1)//github.com/lx-obsidian-labs/lx-obsidian-cli/pull/1",
       "not a url",
     ]) {
       expect(parseChangeRequestUrl(link), link).toBeNull();

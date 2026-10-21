@@ -38,12 +38,12 @@ const TARGET = new PrimaryConnectionTarget({
 const PUBLISH_RESULT: SourceControlPublishRepositoryResult = {
   repository: {
     provider: SourceControlProviderKind.make("github"),
-    nameWithOwner: "t3tools/t3code",
-    url: "https://github.com/t3tools/t3code",
-    sshUrl: "git@github.com:t3tools/t3code.git",
+    nameWithOwner: "lx-obsidian-labs/lx-obsidian-cli",
+    url: "https://github.com/lx-obsidian-labs/lx-obsidian-cli",
+    sshUrl: "git@github.com:lx-obsidian-labs/lx-obsidian-cli.git",
   },
   remoteName: "origin",
-  remoteUrl: "git@github.com:t3tools/t3code.git",
+  remoteUrl: "git@github.com:lx-obsidian-labs/lx-obsidian-cli.git",
   branch: "main",
   upstreamBranch: "origin/main",
   status: "pushed",
@@ -142,7 +142,7 @@ describe("source control environment atoms", () => {
             input: {
               cwd: "/repo",
               provider: SourceControlProviderKind.make("github"),
-              repository: "t3tools/t3code",
+              repository: "lx-obsidian-labs/lx-obsidian-cli",
               visibility: "private",
             },
           }),
@@ -158,7 +158,7 @@ describe("source control environment atoms", () => {
             input: {
               cwd: "/repo",
               provider: SourceControlProviderKind.make("github"),
-              repository: "t3tools/t3code",
+              repository: "lx-obsidian-labs/lx-obsidian-cli",
               visibility: "private",
             },
           }),

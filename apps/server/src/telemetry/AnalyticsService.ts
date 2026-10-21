@@ -1,5 +1,5 @@
 /**
- * Events go to the T3 Code ingest endpoint, which keeps a copy and forwards
+ * Events go to the LX Obsidian CLI ingest endpoint, which keeps a copy and forwards
  * them to PostHog. Each event carries a uuid, so PostHog can tell a retried
  * copy from a new event.
  */
@@ -58,8 +58,8 @@ const RETRY_MAX_DELAY_MS = 300_000;
 const REJECTED_BATCH_STATUSES = new Set([400, 401, 413]);
 
 /**
- * Release channel of this build. Release workflows set it for
- * pingdotgg/t3code builds (see apps/server/vite.config.ts); every other build
+ * Release channel of this build. Release workflows set it
+ * (see apps/server/vite.config.ts); every other build
  * reports "dev". It is separate from `__T3CODE_BUILD_CHANNEL__`, which names
  * stable "latest" and preview "nightly" for the sign-in page.
  */
@@ -72,13 +72,9 @@ export function retryDelayMs(failures: number, random: number): number {
 }
 
 const TelemetryEnvConfig = Config.all({
-  posthogKey: Config.String("T3CODE_POSTHOG_KEY").pipe(
-    Config.withDefault("phc_XOWci4oZP4VvLiEyrFqkFjP4CZn55mjYYBMREK5Wd6m"),
-  ),
-  posthogHost: Config.String("T3CODE_POSTHOG_HOST").pipe(
-    Config.withDefault("https://ingest.t3.codes"),
-  ),
-  enabled: Config.Boolean("T3CODE_TELEMETRY_ENABLED").pipe(Config.withDefault(true)),
+  posthogKey: Config.String("T3CODE_POSTHOG_KEY").pipe(Config.withDefault("")),
+  posthogHost: Config.String("T3CODE_POSTHOG_HOST").pipe(Config.withDefault("")),
+  enabled: Config.Boolean("T3CODE_TELEMETRY_ENABLED").pipe(Config.withDefault(false)),
   flushBatchSize: Config.Number("T3CODE_TELEMETRY_FLUSH_BATCH_SIZE").pipe(Config.withDefault(20)),
   maxBufferedEvents: Config.Number("T3CODE_TELEMETRY_MAX_BUFFERED_EVENTS").pipe(
     Config.withDefault(1_000),
@@ -193,7 +189,7 @@ export const make = Effect.gen(function* () {
   const sendBatch = Effect.fn("AnalyticsService.sendBatch")(function* (
     events: ReadonlyArray<BufferedAnalyticsEvent>,
   ) {
-    if (!telemetryConfig.enabled || !distinctId) return;
+    if (!telemetryConfig.enabled || !distinctId || !telemetryConfig.posthogHost) return;
 
     const payload = {
       api_key: telemetryConfig.posthogKey,
@@ -286,7 +282,7 @@ export const make = Effect.gen(function* () {
 
   const record: AnalyticsService["Service"]["record"] = Effect.fn("AnalyticsService.record")(
     function* (event, properties) {
-      if (!telemetryConfig.enabled || !distinctId) return;
+      if (!telemetryConfig.enabled || !distinctId || !telemetryConfig.posthogHost) return;
 
       // Telemetry is best effort: an event without a uuid is not sent. The
       // Node implementation throws (a defect) rather than failing, so catch both.

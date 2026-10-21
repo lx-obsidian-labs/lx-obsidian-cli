@@ -60,9 +60,9 @@ const NOW = "2026-06-02T00:00:00.000Z";
 
 const linkedPullRequest = {
   projectId: ProjectId.make("project-1"),
-  repository: "pingdotgg/t3code",
+  repository: "lx-obsidian-labs/lx-obsidian-cli",
   number: 42,
-  url: "https://github.com/pingdotgg/t3code/pull/42",
+  url: "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/42",
 };
 
 describe("resolveThreadListV2SnoozeMenuSelection", () => {

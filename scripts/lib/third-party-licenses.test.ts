@@ -270,7 +270,7 @@ describe("third-party license generation", () => {
             {
               licenseId: "MIT",
               copyrights: ["Copyright (c) 2026 Example Author"],
-              preamble: ["Adapted for T3 Code."],
+              preamble: ["Adapted for LX Obsidian CLI."],
             },
           ],
           bundles: ["assets", "web"],

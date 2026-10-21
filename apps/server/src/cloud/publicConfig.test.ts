@@ -52,9 +52,9 @@ it.effect("normalizes the hosted app URL to an absolute origin", () =>
   Effect.gen(function* () {
     assert.equal(
       yield* hostedAppUrlConfig.pipe(
-        provideEnv({ T3CODE_HOSTED_APP_URL: "https://nightly.app.t3.codes" }),
+        provideEnv({ T3CODE_HOSTED_APP_URL: "https://www.lxobsidianportal.co.za" }),
       ),
-      "https://nightly.app.t3.codes",
+      "https://www.lxobsidianportal.co.za",
     );
     assert.equal(
       yield* hostedAppUrlConfig.pipe(
@@ -68,10 +68,10 @@ it.effect("normalizes the hosted app URL to an absolute origin", () =>
 it.effect("rejects malformed or insecure hosted app URLs", () =>
   Effect.gen(function* () {
     for (const value of [
-      "app.t3.codes",
-      "http://app.t3.codes",
-      "https://app.t3.codes/nested",
-      "https://app.t3.codes?alias=true",
+      "www.lxobsidianportal.co.za",
+      "http://www.lxobsidianportal.co.za",
+      "https://www.lxobsidianportal.co.za/nested",
+      "https://www.lxobsidianportal.co.za?alias=true",
     ]) {
       const result = yield* hostedAppUrlConfig.pipe(
         provideEnv({ T3CODE_HOSTED_APP_URL: value }),

@@ -18,17 +18,17 @@ describe("ThreadMetadataMcpUpdateInput", () => {
       decodeUpdate({
         action: "link_pull_request",
         pullRequest: {
-          repository: "pingdotgg/t3code",
+          repository: "lx-obsidian-labs/lx-obsidian-cli",
           number: 8689,
-          url: "https://github.com/pingdotgg/t3code/pull/8689",
+          url: "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/8689",
         },
       }),
       {
         action: "link_pull_request",
         pullRequest: {
-          repository: "pingdotgg/t3code",
+          repository: "lx-obsidian-labs/lx-obsidian-cli",
           number: 8689,
-          url: "https://github.com/pingdotgg/t3code/pull/8689",
+          url: "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/8689",
         },
       },
     );
@@ -45,9 +45,9 @@ describe("ThreadMetadataMcpUpdateInput", () => {
       decodeUpdate({
         action: "unlink_pull_request",
         pullRequest: {
-          repository: "pingdotgg/t3code",
+          repository: "lx-obsidian-labs/lx-obsidian-cli",
           number: 8689,
-          url: "https://github.com/pingdotgg/t3code/pull/8689",
+          url: "https://github.com/lx-obsidian-labs/lx-obsidian-cli/pull/8689",
         },
       }),
     );
@@ -92,7 +92,7 @@ describe("ThreadMetadataMcpUpdateInput", () => {
       assert.throws(() =>
         decodeUpdate({
           action: "link_pull_request",
-          pullRequest: { repository: "pingdotgg/t3code", number: 8690, url },
+          pullRequest: { repository: "lx-obsidian-labs/lx-obsidian-cli", number: 8690, url },
         }),
       );
     }
